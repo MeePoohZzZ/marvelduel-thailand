@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MARVEL DUEL THAILAND TOURNAMENT BY WOLF PACK — 29 สิงหาคม 2569</title>
+
+<!-- ============================================================
+     จุดที่ยังต้องเติม / ยืนยัน — ค้นคำว่า  EDIT:
+     ============================================================ -->
+
+<meta name="description" content="ศึกดวลการ์ด Marvel Duel ชิงแชมป์ประเทศไทย จัดโดย Wolf Pack รับ 24 ที่นั่ง แข่งออนไลน์ล้วน เสาร์ 29 สิงหาคม 2569">
+<meta property="og:title" content="MARVEL DUEL THAILAND TOURNAMENT BY WOLF PACK">
+<meta property="og:description" content="24 ที่นั่ง · ออนไลน์ล้วน · เงินรางวัลรวม 3,300 บาท · เสาร์ 29 ส.ค. 2569 เริ่ม 10:00 น.">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,600;0,800;0,900;1,800;1,900&family=IBM+Plex+Sans+Thai:wght@400;500;600&family=Chakra+Petch:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --ink:#12100F;
+  --ink-2:#1E1815;
+  --blood:#E0322C;
+  --blood-dk:#9E1B18;
+  --gold:#F0B429;
+  --paper:#F3E9D6;
+  --paper-2:#E2D2B4;
+  --indigo:#16233F;
+
+  --display:'Kanit',sans-serif;
+  --body:'IBM Plex Sans Thai',sans-serif;
+  --data:'Chakra Petch',monospace;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+
+body{
+  background:var(--ink);color:var(--paper);
+  font-family:var(--body);font-size:17px;line-height:1.7;overflow-x:hidden;
+}
+
+.grain{
+  position:fixed;inset:0;z-index:200;pointer-events:none;opacity:.16;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode:overlay;
+}
+
+.wrap{width:min(1180px,92vw);margin-inline:auto}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+
+/* ================= NAV ================= */
+.nav{
+  position:sticky;top:0;z-index:100;
+  background:rgba(18,16,15,.9);backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(243,233,214,.14);
+}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:1rem}
+.brand{font-family:var(--display);font-weight:900;font-style:italic;font-size:1rem;line-height:1.1}
+.brand span{color:var(--blood)}
+.brand em{display:block;font-style:normal;font-family:var(--data);font-weight:700;
+  font-size:.6rem;letter-spacing:.28em;color:var(--gold);margin-top:.15rem}
+.nav ul{display:flex;gap:1.4rem;list-style:none;font-size:.84rem;font-weight:500}
+.nav ul a{text-decoration:none;opacity:.75;transition:opacity .2s,color .2s}
+.nav ul a:hover{opacity:1;color:var(--gold)}
+.nav-cta{
+  font-family:var(--display);font-weight:800;font-size:.82rem;
+  background:var(--blood);color:var(--paper);padding:.55rem 1.2rem;
+  text-decoration:none;white-space:nowrap;
+  clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%);
+  transition:background .2s,color .2s;
+}
+.nav-cta:hover{background:var(--gold);color:var(--ink)}
+@media(max-width:940px){.nav ul{display:none}}
+
+/* ================= HERO ================= */
+.hero{
+  position:relative;padding:clamp(2.6rem,6vw,4.6rem) 0 clamp(3rem,6vw,4.5rem);
+  overflow:hidden;
+  background:
+    radial-gradient(ellipse 70% 55% at 50% 0%,rgba(224,50,44,.30),transparent 70%),
+    radial-gradient(ellipse 60% 50% at 50% 100%,rgba(22,35,63,.6),transparent 70%),
+    var(--ink);
+}
+.hero::before{
+  content:"";position:absolute;inset:-30% -10%;z-index:0;opacity:.15;
+  background:repeating-conic-gradient(from 0deg at 50% 40%,var(--blood) 0deg 5deg,transparent 5deg 10deg);
+  animation:spin 90s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.hero .wrap{position:relative;z-index:1}
+
+.eyebrow{
+  font-family:var(--data);font-weight:700;font-size:.75rem;
+  letter-spacing:.28em;text-transform:uppercase;color:var(--gold);
+  display:flex;align-items:center;gap:.8rem;justify-content:center;margin-bottom:1.4rem;
+}
+.eyebrow::before,.eyebrow::after{content:"";height:1px;width:clamp(16px,6vw,64px);background:var(--gold);opacity:.5}
+
+.title{text-align:center;margin-bottom:1.1rem}
+.title i{display:block;font-style:normal;overflow:hidden}
+.title i > b{display:block;font-weight:inherit;animation:rise .9s cubic-bezier(.16,1,.3,1) both}
+.t1{font-family:var(--display);font-weight:800;font-style:italic;
+  font-size:clamp(1rem,3vw,1.7rem);letter-spacing:.18em;color:var(--paper-2)}
+.t2{font-family:var(--display);font-weight:900;font-style:italic;
+  font-size:clamp(3rem,11.5vw,8rem);line-height:.86;letter-spacing:-.02em;
+  color:var(--paper);text-shadow:4px 4px 0 var(--blood-dk)}
+.t3{font-family:var(--display);font-weight:900;font-style:italic;
+  font-size:clamp(1.5rem,5.6vw,4rem);line-height:.95;letter-spacing:.03em;
+  color:var(--blood);-webkit-text-stroke:1px rgba(240,180,41,.45)}
+.t2 > b{animation-delay:.12s}
+.t3 > b{animation-delay:.24s}
+@keyframes rise{from{transform:translateY(105%)}to{transform:translateY(0)}}
+
+.byline{
+  text-align:center;margin-bottom:2.4rem;
+  font-family:var(--data);font-weight:700;font-size:clamp(.72rem,2vw,.92rem);
+  letter-spacing:.34em;text-transform:uppercase;color:var(--gold);
+  display:flex;align-items:center;justify-content:center;gap:.9rem;
+  animation:fade 1s .5s both;
+}
+.byline::before,.byline::after{content:"";height:1px;width:clamp(14px,4vw,34px);background:var(--gold);opacity:.6}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+
+.duel{
+  display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
+  gap:clamp(.6rem,2.5vw,2rem);max-width:800px;margin:0 auto 2.6rem;perspective:1100px;
+}
+.card{
+  position:relative;aspect-ratio:3/4.1;border-radius:10px;
+  padding:clamp(.9rem,2.2vw,1.4rem);
+  display:flex;flex-direction:column;justify-content:space-between;
+  border:1px solid rgba(240,180,41,.4);
+  box-shadow:0 26px 50px -18px rgba(0,0,0,.85);
+  transform-style:preserve-3d;transition:transform .18s ease-out;
+  animation:float 7s ease-in-out infinite;
+}
+.card::after{
+  content:"";position:absolute;inset:0;border-radius:10px;pointer-events:none;
+  background:linear-gradient(115deg,transparent 38%,rgba(255,255,255,.16) 48%,transparent 58%);
+  background-size:250% 250%;animation:foil 6s ease-in-out infinite;
+}
+.card-a{background:linear-gradient(155deg,var(--blood-dk),#4A0F0D 60%,var(--ink-2));transform:rotate(-6deg)}
+.card-b{background:linear-gradient(155deg,var(--indigo),#0C1730 60%,var(--ink-2));transform:rotate(6deg);animation-delay:-3.5s}
+.card-b::after{animation-delay:-3s}
+@keyframes float{0%,100%{translate:0 0}50%{translate:0 -14px}}
+@keyframes foil{0%,100%{background-position:160% 0}50%{background-position:-60% 0}}
+
+.card .stage{font-family:var(--data);font-weight:700;font-size:.66rem;
+  letter-spacing:.22em;color:var(--gold);text-transform:uppercase}
+.card .name{font-family:var(--display);font-weight:900;font-style:italic;
+  font-size:clamp(1rem,3.2vw,1.65rem);line-height:1.06}
+.card .meta{font-family:var(--data);font-weight:600;font-size:clamp(.66rem,1.8vw,.85rem);
+  color:var(--paper-2);border-top:1px solid rgba(243,233,214,.2);padding-top:.6rem}
+.pip{
+  position:absolute;top:clamp(.9rem,2.2vw,1.4rem);right:clamp(.9rem,2.2vw,1.4rem);
+  width:clamp(26px,5.4vw,38px);aspect-ratio:1;border-radius:50%;
+  display:grid;place-items:center;background:var(--gold);color:var(--ink);
+  font-family:var(--data);font-weight:700;font-size:clamp(.62rem,1.6vw,.82rem);
+}
+.vs{font-family:var(--display);font-weight:900;font-style:italic;
+  font-size:clamp(1.6rem,5.5vw,3.4rem);line-height:1;color:var(--gold);
+  text-shadow:0 0 26px rgba(240,180,41,.55)}
+
+.count{display:flex;gap:clamp(.5rem,2vw,1.4rem);justify-content:center;margin-bottom:1.4rem;flex-wrap:wrap}
+.count div{min-width:clamp(62px,15vw,92px);background:rgba(243,233,214,.06);
+  border:1px solid rgba(243,233,214,.16);padding:.7rem .5rem;text-align:center}
+.count b{display:block;font-family:var(--data);font-weight:700;
+  font-size:clamp(1.5rem,4.6vw,2.4rem);line-height:1;color:var(--gold);font-variant-numeric:tabular-nums}
+.count small{font-family:var(--data);font-size:.6rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--paper-2);opacity:.8}
+
+.when-line{
+  text-align:center;font-family:var(--data);font-weight:700;
+  font-size:clamp(.8rem,2.2vw,1rem);letter-spacing:.08em;color:var(--paper-2);
+  margin-bottom:2rem;
+}
+.when-line b{color:var(--paper)}
+
+.hero-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn{font-family:var(--display);font-weight:800;font-size:1rem;
+  padding:.95rem 2.2rem;text-decoration:none;display:inline-block;
+  clip-path:polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%);
+  transition:transform .2s,background .2s,color .2s,box-shadow .2s}
+.btn-primary{background:var(--blood);color:var(--paper)}
+.btn-primary:hover{background:var(--gold);color:var(--ink);transform:translateY(-2px)}
+.btn-ghost{background:transparent;color:var(--paper);box-shadow:inset 0 0 0 2px rgba(243,233,214,.35)}
+.btn-ghost:hover{box-shadow:inset 0 0 0 2px var(--gold);color:var(--gold)}
+
+/* ================= TICKER ================= */
+.ticker{background:var(--gold);color:var(--ink);padding:.6rem 0;
+  overflow:hidden;white-space:nowrap;border-block:2px solid var(--ink)}
+.ticker div{display:inline-flex;gap:2.5rem;animation:slide 26s linear infinite;padding-right:2.5rem}
+.ticker span{font-family:var(--display);font-weight:800;font-style:italic;font-size:.9rem;letter-spacing:.04em}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* ================= SECTIONS ================= */
+section{padding:clamp(3.5rem,8vw,6rem) 0}
+.on-paper{background:var(--paper);color:var(--ink)}
+
+.head{margin-bottom:2.6rem;max-width:660px}
+.head .kicker{font-family:var(--data);font-weight:700;font-size:.72rem;
+  letter-spacing:.28em;text-transform:uppercase;color:var(--blood);margin-bottom:.7rem}
+.head h2{font-family:var(--display);font-weight:900;font-style:italic;
+  font-size:clamp(1.9rem,5.2vw,3.1rem);line-height:1.03;letter-spacing:-.01em}
+.head p{margin-top:.9rem;opacity:.78;font-size:1.02rem}
+
+/* ---- bracket flow ---- */
+.flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:clamp(.6rem,1.6vw,1.4rem);
+  align-items:stretch;margin-bottom:2.6rem}
+@media(max-width:860px){
+  .flow{grid-template-columns:1fr;gap:.9rem}
+  .flow .arrow{transform:rotate(90deg);justify-self:center}
+}
+.stagebox{background:rgba(18,16,15,.06);border-top:6px solid var(--blood);
+  padding:1.4rem 1.2rem;display:flex;flex-direction:column}
+.stagebox.final{border-top-color:#B8860B}
+.stagebox .lbl{font-family:var(--data);font-weight:700;font-size:.68rem;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--blood);margin-bottom:.5rem}
+.stagebox.final .lbl{color:#8A6410}
+.stagebox h3{font-family:var(--display);font-weight:900;font-style:italic;
+  font-size:clamp(1.6rem,4.4vw,2.2rem);line-height:1;margin-bottom:.15rem}
+.stagebox .sub{font-family:var(--data);font-weight:600;font-size:.8rem;opacity:.72;margin-bottom:.9rem}
+.pods{display:flex;gap:.35rem;flex-wrap:wrap;margin-top:auto}
+.pod{flex:1;min-width:38px;background:var(--ink);color:var(--paper);
+  font-family:var(--data);font-weight:700;font-size:.7rem;
+  text-align:center;padding:.45rem .2rem;border-radius:3px}
+.stagebox.final .pod{background:var(--blood-dk)}
+.arrow{display:grid;place-items:center;font-family:var(--data);
+  font-weight:700;font-size:1.5rem;color:var(--blood);opacity:.55}
+
+/* ---- points ladder ---- */
+.ladder{display:grid;gap:.4rem;max-width:640px}
+.rung{display:grid;grid-template-columns:3.4rem 1fr auto;align-items:center;gap:1rem;
+  background:rgba(243,233,214,.06);padding:.7rem 1rem;
+  border-left:6px solid rgba(243,233,214,.22)}
+.rung.top{border-left-color:var(--gold);background:rgba(240,180,41,.13)}
+.rung .pos{font-family:var(--display);font-weight:900;font-style:italic;font-size:1.1rem}
+.rung .track{height:9px;background:rgba(243,233,214,.12);border-radius:2px;overflow:hidden}
+.rung .bar{display:block;height:100%;background:var(--blood);border-radius:2px}
+.rung.top .bar{background:var(--gold)}
+.rung .pts{font-family:var(--data);font-weight:700;font-size:1rem;white-space:nowrap;color:var(--gold)}
+
+/* ---- prizes ---- */
+.prizes{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:1.1rem;align-items:end}
+.prize{background:var(--ink);color:var(--paper);padding:1.7rem 1.3rem;text-align:center;
+  border-top:6px solid var(--paper-2);transition:transform .25s}
+.prize:hover{transform:translateY(-6px)}
+.prize.first{border-top-color:var(--gold);padding-block:2.5rem}
+.prize.special{border-top-color:var(--blood)}
+.prize .rank{font-family:var(--data);font-weight:700;font-size:.7rem;
+  letter-spacing:.22em;text-transform:uppercase;opacity:.72;margin-bottom:.6rem}
+.prize .amt{font-family:var(--display);font-weight:900;font-style:italic;
+  font-size:clamp(1.6rem,4.4vw,2.4rem);line-height:1}
+.prize.first .amt{color:var(--gold);font-size:clamp(2rem,5.4vw,3rem)}
+.prize.special .amt{color:var(--blood)}
+.prize .extra{font-size:.82rem;opacity:.7;margin-top:.5rem}
+
+/* ---- judges ---- */
+.judges{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem;max-width:760px}
+.judge{display:flex;align-items:center;gap:1.1rem;background:rgba(243,233,214,.05);
+  border:1px solid rgba(243,233,214,.16);padding:1.2rem 1.3rem;
+  text-decoration:none;transition:border-color .2s,background .2s}
+.judge:hover{border-color:var(--gold);background:rgba(240,180,41,.08)}
+.judge .av{width:52px;height:52px;flex:none;border-radius:50%;
+  background:linear-gradient(150deg,var(--blood),var(--indigo));
+  display:grid;place-items:center;font-family:var(--display);
+  font-weight:900;font-style:italic;font-size:1.15rem;color:var(--paper)}
+.judge .who{font-family:var(--display);font-weight:800;font-size:1.05rem;line-height:1.2}
+.judge .role{font-family:var(--data);font-weight:600;font-size:.7rem;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-top:.2rem}
+
+/* ---- rules / faq ---- */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,3.5rem)}
+@media(max-width:800px){.two{grid-template-columns:1fr}}
+.rules{list-style:none}
+.rules li{padding:.85rem 0 .85rem 2rem;position:relative;
+  border-bottom:1px solid rgba(18,16,15,.12);font-size:.95rem}
+.rules li::before{content:"";position:absolute;left:0;top:1.35rem;
+  width:10px;height:10px;background:var(--blood);clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%)}
+details{border-bottom:1px solid rgba(18,16,15,.12)}
+summary{cursor:pointer;padding:.95rem 0;list-style:none;
+  font-family:var(--display);font-weight:600;font-size:1rem;
+  display:flex;justify-content:space-between;gap:1rem;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:var(--data);font-size:1.3rem;color:var(--blood)}
+details[open] summary::after{content:"–"}
+details p{padding-bottom:1rem;font-size:.93rem;opacity:.8;max-width:56ch}
+
+/* ---- register ---- */
+.register{background:
+  radial-gradient(ellipse 65% 60% at 50% 50%,rgba(224,50,44,.28),transparent 70%),var(--ink);
+  text-align:center}
+.register h2{font-family:var(--display);font-weight:900;font-style:italic;
+  font-size:clamp(2rem,6.2vw,3.8rem);line-height:1;margin-bottom:1rem}
+.register p{max-width:52ch;margin:0 auto 2rem;opacity:.82}
+.seats{font-family:var(--data);font-weight:700;font-size:.8rem;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-top:1.6rem}
+
+/* ---- footer ---- */
+footer{background:var(--ink-2);padding:3rem 0 2.2rem;font-size:.9rem}
+.foot{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;align-items:flex-start}
+.socials{display:flex;gap:1.4rem;list-style:none;flex-wrap:wrap}
+.socials a{text-decoration:none;opacity:.8;transition:color .2s,opacity .2s}
+.socials a:hover{color:var(--gold);opacity:1}
+.disclaimer{margin-top:2.4rem;padding-top:1.4rem;
+  border-top:1px solid rgba(243,233,214,.14);
+  font-size:.77rem;opacity:.55;max-width:72ch;line-height:1.65}
+
+.reveal{opacity:0;transform:translateY(26px);
+  transition:opacity .7s ease,transform .7s cubic-bezier(.16,1,.3,1)}
+.reveal.in{opacity:1;transform:none}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<div class="grain"></div>
+
+<nav class="nav">
+  <div class="wrap">
+    <div class="brand">MARVEL DUEL <span>THAILAND</span><em>by Wolf Pack</em></div>
+    <ul>
+      <li><a href="#format">รูปแบบการแข่ง</a></li>
+      <li><a href="#points">คะแนนรอบชิง</a></li>
+      <li><a href="#prizes">รางวัล</a></li>
+      <li><a href="#judges">กรรมการ</a></li>
+      <li><a href="#faq">คำถามที่พบบ่อย</a></li>
+    </ul>
+    <a class="nav-cta" href="https://discord.gg/yXu2bTZvS" target="_blank" rel="noopener">สมัครแข่ง</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+
+    <p class="eyebrow">ศึกดวลการ์ดออนไลน์ ชิงแชมป์ประเทศไทย</p>
+
+    <h1 class="title">
+      <i class="t1"><b>MARVEL DUEL</b></i>
+      <i class="t2"><b>THAILAND</b></i>
+      <i class="t3"><b>TOURNAMENT</b></i>
+    </h1>
+    <p class="byline">by Wolf Pack</p>
+
+    <div class="duel" id="duel">
+      <article class="card card-a">
+        <div class="pip">24</div>
+        <p class="stage">Group Stage</p>
+        <p class="name">รอบแบ่งกลุ่ม<br>4 กลุ่ม</p>
+        <p class="meta">กลุ่มละ 6 คน · เข้ารอบกลุ่มละ 3</p>
+      </article>
+
+      <div class="vs">VS</div>
+
+      <article class="card card-b">
+        <div class="pip">6</div>
+        <p class="stage">Grand Final</p>
+        <p class="name">รอบชิง<br>ชนะเลิศ</p>
+        <p class="meta">3 เกม · เก็บคะแนนรวม</p>
+      </article>
+    </div>
+
+    <div class="count" id="count">
+      <div><b id="d">--</b><small>วัน</small></div>
+      <div><b id="h">--</b><small>ชั่วโมง</small></div>
+      <div><b id="m">--</b><small>นาที</small></div>
+      <div><b id="s">--</b><small>วินาที</small></div>
+    </div>
+
+    <p class="when-line">เสาร์ที่ <b>29 สิงหาคม 2569</b> · เริ่ม <b>10:00 น.</b> · แข่งออนไลน์ล้วน</p>
+
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="https://discord.gg/yXu2bTZvS" target="_blank" rel="noopener">สมัครทาง Discord</a>
+      <a class="btn btn-ghost" href="#format">ดูรูปแบบการแข่ง</a>
+    </div>
+
+  </div>
+</header>
+
+<div class="ticker" aria-hidden="true">
+  <div>
+    <span>รับ 24 ที่นั่ง</span><span>◆</span><span>แข่งออนไลน์ล้วน</span><span>◆</span>
+    <span>สมัครฟรี</span><span>◆</span><span>เงินรางวัลรวม 3,300 บาท</span><span>◆</span>
+    <span>รับ 24 ที่นั่ง</span><span>◆</span><span>แข่งออนไลน์ล้วน</span><span>◆</span>
+    <span>สมัครฟรี</span><span>◆</span><span>เงินรางวัลรวม 3,300 บาท</span><span>◆</span>
+  </div>
+</div>
+
+<section id="format" class="on-paper">
+  <div class="wrap">
+    <div class="head reveal">
+      <p class="kicker">รูปแบบการแข่งขัน</p>
+      <h2>24 คน<br>เหลือ 1 แชมป์</h2>
+      <p>ตัดตัวสองครั้ง จากรอบแบ่งกลุ่มสู่รอบรองชนะเลิศ แล้วเข้าสู่รอบชิงชนะเลิศ 6 คนสุดท้าย</p>
+    </div>
+
+    <div class="flow reveal">
+      <div class="stagebox">
+        <p class="lbl">Stage 01</p>
+        <h3>24 คน</h3>
+        <p class="sub">รอบแบ่งกลุ่ม · 4 กลุ่ม กลุ่มละ 6 คน</p>
+        <div class="pods">
+          <div class="pod">A</div><div class="pod">B</div><div class="pod">C</div><div class="pod">D</div>
+        </div>
+      </div>
+
+      <div class="arrow" aria-hidden="true">▶</div>
+
+      <div class="stagebox">
+        <p class="lbl">Stage 02</p>
+        <h3>12 คน</h3>
+        <p class="sub">รอบรองชนะเลิศ · 2 กลุ่ม กลุ่มละ 6 คน</p>
+        <div class="pods">
+          <div class="pod">A</div><div class="pod">B</div>
+        </div>
+      </div>
+
+      <div class="arrow" aria-hidden="true">▶</div>
+
+      <div class="stagebox final">
+        <p class="lbl">Stage 03</p>
+        <h3>6 คน</h3>
+        <p class="sub">รอบชิงชนะเลิศ · เก็บคะแนน 3 เกม</p>
+        <div class="pods">
+          <div class="pod">FINAL</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="two reveal">
+      <ul class="rules">
+        <li><b>รอบแบ่งกลุ่ม</b> — ผู้เล่น 24 คน แบ่ง 4 กลุ่ม กลุ่มละ 6 คน อันดับ 1–3 ของแต่ละกลุ่มผ่านเข้ารอบต่อไป</li>
+        <li><b>รอบรองชนะเลิศ</b> — ผู้เล่น 12 คน แบ่ง 2 กลุ่ม กลุ่มละ 6 คน อันดับ 1–3 ของแต่ละกลุ่มเข้าชิงชนะเลิศ</li>
+        <li><b>รอบชิงชนะเลิศ</b> — ผู้เล่น 6 คนสุดท้าย แข่ง 3 เกม เก็บคะแนนสะสม คะแนนรวมสูงสุดเป็นแชมป์</li>
+      </ul>
+      <!-- EDIT: ถ้ามีเกณฑ์จัดอันดับในรอบกลุ่ม/รอบรอง (เช่น นับชัยชนะ หรือใช้คะแนนแบบเดียวกับรอบชิง) เติมตรงนี้ -->
+      <ul class="rules">
+        <li><b>แข่งออนไลน์ทั้งรายการ</b> — ไม่ต้องเดินทาง เล่นจากที่ไหนก็ได้</li>
+        <li><b>ไม่มีค่าสมัคร</b> — เปิดรับผู้เล่นทุกระดับ ไม่จำกัดอันดับในเกม</li>
+        <li><b>ที่นั่งจำกัด 24 คน</b> — ปิดรับทันทีเมื่อครบจำนวน</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="points">
+  <div class="wrap">
+    <div class="head reveal">
+      <p class="kicker">รอบชิงชนะเลิศ</p>
+      <h2>คะแนนต่อเกม</h2>
+      <p>รอบชิงชนะเลิศแข่ง 3 เกม แต่ละเกมให้คะแนนตามอันดับที่จบ นำคะแนนทั้ง 3 เกมมารวมกันเพื่อหาแชมป์ คะแนนเต็ม 21 คะแนน</p>
+    </div>
+
+    <div class="ladder reveal">
+      <div class="rung top">
+        <span class="pos">ที่ 1</span>
+        <span class="track"><span class="bar" style="width:100%"></span></span>
+        <span class="pts">7 คะแนน</span>
+      </div>
+      <div class="rung">
+        <span class="pos">ที่ 2</span>
+        <span class="track"><span class="bar" style="width:71%"></span></span>
+        <span class="pts">5 คะแนน</span>
+      </div>
+      <div class="rung">
+        <span class="pos">ที่ 3</span>
+        <span class="track"><span class="bar" style="width:43%"></span></span>
+        <span class="pts">3 คะแนน</span>
+      </div>
+      <div class="rung">
+        <span class="pos">ที่ 4</span>
+        <span class="track"><span class="bar" style="width:29%"></span></span>
+        <span class="pts">2 คะแนน</span>
+      </div>
+      <div class="rung">
+        <span class="pos">ที่ 5</span>
+        <span class="track"><span class="bar" style="width:14%"></span></span>
+        <span class="pts">1 คะแนน</span>
+      </div>
+      <div class="rung">
+        <span class="pos">ที่ 6</span>
+        <span class="track"></span>
+        <span class="pts">0 คะแนน</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="prizes" class="on-paper">
+  <div class="wrap">
+    <div class="head reveal">
+      <p class="kicker">เงินรางวัล</p>
+      <h2>รวม 3,300 บาท</h2>
+      <p>รวมรางวัลขวัญใจผู้ชม ซึ่งตัดสินจากคะแนนโหวตของผู้ชม</p>
+    </div>
+
+    <!-- EDIT: ถ้าปรับยอดรวมเป็น 3,500 อย่าลืมแก้ทั้งหัวข้อด้านบน แถบวิ่ง และ meta og:description -->
+    <div class="prizes reveal">
+      <div class="prize">
+        <p class="rank">รองชนะเลิศ</p>
+        <p class="amt">1,000฿</p>
+      </div>
+      <div class="prize first">
+        <p class="rank">ชนะเลิศ</p>
+        <p class="amt">1,500฿</p>
+      </div>
+      <div class="prize">
+        <p class="rank">อันดับ 3</p>
+        <p class="amt">500฿</p>
+      </div>
+      <div class="prize special">
+        <p class="rank">ขวัญใจผู้ชม</p>
+        <p class="amt">300฿</p>
+        <p class="extra">ผู้ชมเป็นผู้โหวต</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="judges">
+  <div class="wrap">
+    <div class="head reveal">
+      <p class="kicker">คณะกรรมการ</p>
+      <h2>ผู้ตัดสิน</h2>
+      <p>คำตัดสินของกรรมการถือเป็นที่สิ้นสุด ติดต่อกรรมการได้โดยตรงหากมีข้อโต้แย้งระหว่างแข่ง</p>
+    </div>
+
+    <div class="judges reveal">
+      <a class="judge" href="https://www.facebook.com/groups/496044274402417/user/100005956601528/" target="_blank" rel="noopener">
+        <div class="av">W</div>
+        <div>
+          <p class="who">Whytechoc Ornz</p>
+          <p class="role">กรรมการ</p>
+        </div>
+      </a>
+      <a class="judge" href="https://www.facebook.com/mildsakimsk" target="_blank" rel="noopener">
+        <div class="av">M</div>
+        <div>
+          <p class="who">Msk</p>
+          <p class="role">กรรมการ</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="faq" class="on-paper">
+  <div class="wrap">
+    <div class="two">
+      <div class="reveal">
+        <div class="head">
+          <p class="kicker">กติกาสำคัญ</p>
+          <h2>อ่านก่อนสมัคร</h2>
+        </div>
+        <ul class="rules">
+          <li>ใช้บัญชีของตนเองเท่านั้น ห้ามให้ผู้อื่นเล่นแทนทุกกรณี</li>
+          <li>มาสายเกิน 10 นาทีหลังเรียกแมตช์ ถือว่าสละสิทธิ์ในเกมนั้น</li>
+          <li>อยู่ในห้อง Discord ของรายการตลอดการแข่งขัน เพื่อรับการเรียกคิวและประกาศจากทีมงาน</li>
+          <li>บันทึกวิดีโอหน้าจอไว้ เพื่อใช้ตรวจสอบเมื่อมีข้อโต้แย้ง</li>
+          <li>ปัญหาการเชื่อมต่อฝั่งผู้เล่นไม่ถือเป็นเหตุให้แข่งใหม่ ยกเว้นเซิร์ฟเวอร์เกมล่ม</li>
+          <li>คำตัดสินของกรรมการถือเป็นที่สิ้นสุด</li>
+        </ul>
+      </div>
+
+      <div class="reveal">
+        <div class="head">
+          <p class="kicker">คำถามที่พบบ่อย</p>
+          <h2>สงสัยตรงไหน</h2>
+        </div>
+        <details>
+          <summary>สมัครยังไง</summary>
+          <p>เข้า Discord ของรายการแล้วทำตามขั้นตอนในห้องรับสมัคร ทีมงานจะยืนยันที่นั่งให้ในห้องเดียวกัน</p>
+        </details>
+        <details>
+          <summary>ต้องเสียค่าสมัครไหม</summary>
+          <p>ไม่มีค่าสมัคร รายการนี้จัดโดยชุมชนผู้เล่น เปิดให้เข้าร่วมฟรี</p>
+        </details>
+        <details>
+          <summary>ผู้เล่นใหม่สมัครได้ไหม</summary>
+          <p>ได้ ไม่มีเกณฑ์อันดับขั้นต่ำ ขอแค่มีบัญชีที่เข้าเล่นได้ปกติ</p>
+        </details>
+        <details>
+          <summary>ที่นั่งเต็มแล้วทำยังไง</summary>
+          <p>รายการรับ 24 คน หากเต็มแล้วแจ้งชื่อไว้เป็นตัวสำรองใน Discord ได้ ทีมงานจะติดต่อกลับหากมีผู้สละสิทธิ์</p>
+        </details>
+        <details>
+          <summary>ใช้เวลาแข่งทั้งวันไหม</summary>
+          <p>เริ่ม 10:00 น. แข่งต่อเนื่องตั้งแต่รอบแบ่งกลุ่มจนถึงรอบชิงชนะเลิศ กรุณาเผื่อเวลาไว้ทั้งวัน</p>
+        </details>
+        <details>
+          <summary>รางวัลขวัญใจผู้ชมตัดสินยังไง</summary>
+          <p>ผู้ชมเป็นผู้โหวต รายละเอียดวิธีโหวตจะประกาศใน Discord ก่อนวันแข่ง</p>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="register" class="register">
+  <div class="wrap reveal">
+    <h2>พร้อมลงสนามหรือยัง</h2>
+    <p>รับเพียง 24 ที่นั่ง สมัครและติดตามประกาศทั้งหมดผ่าน Discord ของรายการ</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="https://discord.gg/yXu2bTZvS" target="_blank" rel="noopener">เข้า Discord เพื่อสมัคร</a>
+    </div>
+    <p class="seats">รับ 24 ที่นั่ง · ปิดรับเมื่อครบจำนวน</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <div class="brand" style="margin-bottom:.7rem">MARVEL DUEL <span>THAILAND</span><em>by Wolf Pack</em></div>
+        <p style="opacity:.7;max-width:36ch">รายการแข่งขันที่จัดโดยชุมชนผู้เล่นในประเทศไทย</p>
+      </div>
+      <ul class="socials">
+        <li><a href="https://discord.gg/yXu2bTZvS" target="_blank" rel="noopener">Discord</a></li>
+        <li><a href="https://www.facebook.com/groups/496044274402417/user/100005956601528/" target="_blank" rel="noopener">Whytechoc Ornz</a></li>
+        <li><a href="https://www.facebook.com/mildsakimsk" target="_blank" rel="noopener">Msk</a></li>
+      </ul>
+    </div>
+    <p class="disclaimer">
+      รายการนี้จัดโดยกลุ่มผู้เล่นอิสระ ไม่ได้มีส่วนเกี่ยวข้อง ได้รับการรับรอง หรือสนับสนุนโดย Marvel, The Walt Disney Company หรือ NetEase
+      ชื่อเกมและเครื่องหมายการค้าทั้งหมดเป็นทรัพย์สินของเจ้าของสิทธิ์ตามกฎหมาย
+    </p>
+  </div>
+</footer>
+
+<script>
+/* ====== วันเริ่มแข่ง: เสาร์ 29 ส.ค. 2569 (ค.ศ. 2026) 10:00 น. ======
+   รูปแบบ: (ปี ค.ศ., เดือน-1, วัน, ชั่วโมง, นาที) — เดือนเริ่มนับ 0 = มกราคม  */
+const TOURNAMENT_DATE = new Date(2026, 7, 29, 10, 0, 0);
+
+const pad = n => String(n).padStart(2,'0');
+const el = {d:document.getElementById('d'),h:document.getElementById('h'),
+            m:document.getElementById('m'),s:document.getElementById('s')};
+
+function tick(){
+  const gap = TOURNAMENT_DATE - new Date();
+  if(gap <= 0){
+    el.d.textContent = el.h.textContent = el.m.textContent = el.s.textContent = '00';
+    return;
+  }
+  const sec = Math.floor(gap/1000);
+  el.d.textContent = pad(Math.floor(sec/86400));
+  el.h.textContent = pad(Math.floor(sec%86400/3600));
+  el.m.textContent = pad(Math.floor(sec%3600/60));
+  el.s.textContent = pad(sec%60);
+}
+tick(); setInterval(tick,1000);
+
+/* ====== scroll reveal ====== */
+const io = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(n=>io.observe(n));
+
+/* ====== การ์ดเอียงตามเมาส์ ====== */
+const duel = document.getElementById('duel');
+const cards = duel.querySelectorAll('.card');
+const base = [-6, 6];
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+if(!reduce && matchMedia('(pointer:fine)').matches){
+  duel.addEventListener('mousemove', ev=>{
+    const r = duel.getBoundingClientRect();
+    const px = (ev.clientX - r.left)/r.width - .5;
+    const py = (ev.clientY - r.top)/r.height - .5;
+    cards.forEach((c,i)=>{
+      c.style.transform =
+        `rotate(${base[i]}deg) rotateY(${px*16}deg) rotateX(${-py*14}deg) translateZ(24px)`;
+    });
+  });
+  duel.addEventListener('mouseleave', ()=>{
+    cards.forEach((c,i)=>{ c.style.transform = `rotate(${base[i]}deg)`; });
+  });
+}
+</script>
+</body>
+</html>
