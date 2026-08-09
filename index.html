@@ -9,10 +9,14 @@
      จุดที่ยังต้องเติม / ยืนยัน — ค้นคำว่า  EDIT:
      ============================================================ -->
 
-<meta name="description" content="ศึกดวลการ์ด Marvel Duel ชิงแชมป์ประเทศไทย จัดโดย Wolf Pack รับ 24 ที่นั่ง แข่งออนไลน์ล้วน เสาร์ 29 สิงหาคม 2569">
+<meta name="description" content="ศึกดวลการ์ด Marvel Duel ชิงแชมป์ประเทศไทย จัดโดย Wolf Pack รับ 24 ที่นั่ง ค่าสมัคร 50 บาท แข่งออนไลน์ล้วน เสาร์ 29 สิงหาคม 2569">
 <meta property="og:title" content="MARVEL DUEL THAILAND TOURNAMENT BY WOLF PACK">
-<meta property="og:description" content="24 ที่นั่ง · ออนไลน์ล้วน · เงินรางวัลรวม 3,300 บาท · เสาร์ 29 ส.ค. 2569 เริ่ม 10:00 น.">
+<meta property="og:description" content="24 ที่นั่ง · ค่าสมัคร 50 บาท · ออนไลน์ล้วน · เงินรางวัลรวม 3,300 บาท · เสาร์ 29 ส.ค. 2569 เริ่ม 10:00 น.">
 <meta property="og:type" content="website">
+<!-- EDIT: เมื่ออัปโหลดขึ้นโฮสต์จริง เปลี่ยนเป็น URL เต็ม เช่น https://โดเมนของคุณ/assets/marvel-duel-key-art.jpg -->
+<meta property="og:image" content="assets/marvel-duel-key-art.jpg">
+
+<link rel="preload" as="image" href="assets/marvel-duel-key-art.jpg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -78,7 +82,7 @@ a{color:inherit}
 
 /* ================= HERO ================= */
 .hero{
-  position:relative;padding:clamp(2.6rem,6vw,4.6rem) 0 clamp(3rem,6vw,4.5rem);
+  position:relative;padding:clamp(2rem,4.5vw,3.4rem) 0 clamp(3rem,6vw,4.5rem);
   overflow:hidden;
   background:
     radial-gradient(ellipse 70% 55% at 50% 0%,rgba(224,50,44,.30),transparent 70%),
@@ -92,6 +96,25 @@ a{color:inherit}
 }
 @keyframes spin{to{transform:rotate(360deg)}}
 .hero .wrap{position:relative;z-index:1}
+
+/* ---- ภาพคีย์อาร์ตด้านบนสุด (เฉพาะบล็อกนี้ ไม่ใช่พื้นหลัง) ---- */
+.keyart{
+  position:relative;max-width:940px;
+  margin:0 auto clamp(.4rem,1.5vw,1rem);
+}
+/* ไล่ให้ขอบภาพทั้งสี่ด้านจางหายไปกับพื้น — ไม่มีกรอบ ไม่มีเส้นตัด */
+.keyart img{
+  display:block;width:100%;height:auto;
+  filter:saturate(.88) contrast(1.03) brightness(.9);
+  -webkit-mask-image:
+    linear-gradient(90deg,transparent 0,#000 18%,#000 82%,transparent 100%),
+    linear-gradient(180deg,transparent 0,#000 16%,#000 62%,transparent 100%);
+  -webkit-mask-composite:source-in;
+  mask-image:
+    linear-gradient(90deg,transparent 0,#000 18%,#000 82%,transparent 100%),
+    linear-gradient(180deg,transparent 0,#000 16%,#000 62%,transparent 100%);
+  mask-composite:intersect;
+}
 
 .eyebrow{
   font-family:var(--data);font-weight:700;font-size:.75rem;
@@ -232,6 +255,44 @@ section{padding:clamp(3.5rem,8vw,6rem) 0}
 .arrow{display:grid;place-items:center;font-family:var(--data);
   font-weight:700;font-size:1.5rem;color:var(--blood);opacity:.55}
 
+/* ---- ผู้เข้าร่วม / ที่นั่ง ---- */
+.seats-sec{background:
+  radial-gradient(ellipse 70% 60% at 20% 0%,rgba(22,35,63,.55),transparent 70%),var(--ink)}
+.seatwrap{display:grid;grid-template-columns:minmax(230px,300px) 1fr;
+  gap:clamp(1.4rem,4vw,3rem);align-items:start}
+@media(max-width:860px){.seatwrap{grid-template-columns:1fr}}
+
+.seatnum{background:rgba(243,233,214,.05);border:1px solid rgba(243,233,214,.16);
+  padding:1.6rem 1.3rem;text-align:center}
+.seatnum b{display:block;font-family:var(--data);font-weight:700;
+  font-size:clamp(3.6rem,13vw,5.6rem);line-height:.88;color:var(--gold);
+  font-variant-numeric:tabular-nums}
+.seatnum .lead{font-family:var(--data);font-weight:700;font-size:.7rem;
+  letter-spacing:.24em;text-transform:uppercase;color:var(--paper-2);opacity:.8;margin-bottom:.7rem}
+.seatnum .of{font-family:var(--data);font-weight:700;font-size:.78rem;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--paper-2);opacity:.75;margin-top:.6rem}
+.seatbar{height:12px;background:rgba(243,233,214,.12);margin-top:1.1rem;overflow:hidden}
+.seatbar i{display:block;height:100%;width:0;
+  background:linear-gradient(90deg,var(--blood),var(--gold));
+  transition:width .9s cubic-bezier(.16,1,.3,1)}
+.seatnum .fee{font-family:var(--data);font-weight:700;font-size:.75rem;
+  letter-spacing:.1em;color:var(--gold);margin-top:1.1rem;
+  border-top:1px solid rgba(243,233,214,.18);padding-top:.9rem}
+.seatnum.full b{color:var(--blood)}
+
+.slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:.5rem}
+.slot{display:flex;align-items:center;gap:.65rem;min-height:54px;padding:.5rem .7rem;
+  background:rgba(243,233,214,.05);border:1px solid rgba(243,233,214,.14)}
+.slot .no{font-family:var(--data);font-weight:700;font-size:.68rem;
+  color:var(--gold);opacity:.65;width:1.5rem;flex:none;font-variant-numeric:tabular-nums}
+.slot .nm{font-family:var(--display);font-weight:600;font-size:.9rem;
+  line-height:1.2;overflow-wrap:anywhere}
+.slot .ign{display:block;font-family:var(--data);font-weight:600;font-size:.66rem;
+  letter-spacing:.1em;color:var(--paper-2);opacity:.7;margin-top:.1rem}
+.slot.taken{border-color:rgba(240,180,41,.4);background:rgba(240,180,41,.09)}
+.slot.free{border-style:dashed;border-color:rgba(243,233,214,.18)}
+.slot.free .nm{font-family:var(--body);font-weight:400;font-size:.82rem;opacity:.4}
+
 /* ---- points ladder ---- */
 .ladder{display:grid;gap:.4rem;max-width:640px}
 .rung{display:grid;grid-template-columns:3.4rem 1fr auto;align-items:center;gap:1rem;
@@ -329,6 +390,7 @@ footer{background:var(--ink-2);padding:3rem 0 2.2rem;font-size:.9rem}
   <div class="wrap">
     <div class="brand">MARVEL DUEL <span>THAILAND</span><em>by Wolf Pack</em></div>
     <ul>
+      <li><a href="#seats">ผู้เข้าร่วม</a></li>
       <li><a href="#format">รูปแบบการแข่ง</a></li>
       <li><a href="#points">คะแนนรอบชิง</a></li>
       <li><a href="#prizes">รางวัล</a></li>
@@ -341,6 +403,11 @@ footer{background:var(--ink-2);padding:3rem 0 2.2rem;font-size:.9rem}
 
 <header class="hero">
   <div class="wrap">
+
+    <figure class="keyart">
+      <img src="assets/marvel-duel-key-art.jpg" width="1179" height="553"
+           alt="คีย์อาร์ตเกม Marvel Duel — ธอร์ปะทะไอรอนแมน" decoding="async">
+    </figure>
 
     <p class="eyebrow">ศึกดวลการ์ดออนไลน์ ชิงแชมป์ประเทศไทย</p>
 
@@ -389,11 +456,33 @@ footer{background:var(--ink-2);padding:3rem 0 2.2rem;font-size:.9rem}
 <div class="ticker" aria-hidden="true">
   <div>
     <span>รับ 24 ที่นั่ง</span><span>◆</span><span>แข่งออนไลน์ล้วน</span><span>◆</span>
-    <span>สมัครฟรี</span><span>◆</span><span>เงินรางวัลรวม 3,300 บาท</span><span>◆</span>
+    <span>ค่าสมัคร 50 บาท</span><span>◆</span><span>เงินรางวัลรวม 3,300 บาท</span><span>◆</span>
     <span>รับ 24 ที่นั่ง</span><span>◆</span><span>แข่งออนไลน์ล้วน</span><span>◆</span>
-    <span>สมัครฟรี</span><span>◆</span><span>เงินรางวัลรวม 3,300 บาท</span><span>◆</span>
+    <span>ค่าสมัคร 50 บาท</span><span>◆</span><span>เงินรางวัลรวม 3,300 บาท</span><span>◆</span>
   </div>
 </div>
+
+<section id="seats" class="seats-sec">
+  <div class="wrap">
+    <div class="head reveal">
+      <p class="kicker">ผู้เข้าร่วม</p>
+      <h2>ที่นั่งเหลือเท่าไหร่</h2>
+      <p>รับ 24 ที่นั่ง ค่าสมัคร 50 บาทต่อคน ที่นั่งจะขึ้นเป็น “ยืนยันแล้ว” เมื่อทีมงานตรวจสอบการชำระเงินเรียบร้อย</p>
+    </div>
+
+    <div class="seatwrap reveal">
+      <div class="seatnum" id="seatnum">
+        <p class="lead">ที่นั่งว่าง</p>
+        <b id="seat-left">24</b>
+        <p class="of">จากทั้งหมด 24 ที่นั่ง</p>
+        <div class="seatbar"><i id="seat-bar"></i></div>
+        <p class="fee">ค่าสมัคร 50 บาท / คน</p>
+      </div>
+
+      <div class="slots" id="slots"></div>
+    </div>
+  </div>
+</section>
 
 <section id="format" class="on-paper">
   <div class="wrap">
@@ -445,7 +534,7 @@ footer{background:var(--ink-2);padding:3rem 0 2.2rem;font-size:.9rem}
       <!-- EDIT: ถ้ามีเกณฑ์จัดอันดับในรอบกลุ่ม/รอบรอง (เช่น นับชัยชนะ หรือใช้คะแนนแบบเดียวกับรอบชิง) เติมตรงนี้ -->
       <ul class="rules">
         <li><b>แข่งออนไลน์ทั้งรายการ</b> — ไม่ต้องเดินทาง เล่นจากที่ไหนก็ได้</li>
-        <li><b>ไม่มีค่าสมัคร</b> — เปิดรับผู้เล่นทุกระดับ ไม่จำกัดอันดับในเกม</li>
+        <li><b>ค่าสมัคร 50 บาทต่อคน</b> — ชำระเพื่อยืนยันที่นั่ง เปิดรับผู้เล่นทุกระดับ ไม่จำกัดอันดับในเกม</li>
         <li><b>ที่นั่งจำกัด 24 คน</b> — ปิดรับทันทีเมื่อครบจำนวน</li>
       </ul>
     </div>
@@ -581,8 +670,9 @@ footer{background:var(--ink-2);padding:3rem 0 2.2rem;font-size:.9rem}
           <p>เข้า Discord ของรายการแล้วทำตามขั้นตอนในห้องรับสมัคร ทีมงานจะยืนยันที่นั่งให้ในห้องเดียวกัน</p>
         </details>
         <details>
-          <summary>ต้องเสียค่าสมัครไหม</summary>
-          <p>ไม่มีค่าสมัคร รายการนี้จัดโดยชุมชนผู้เล่น เปิดให้เข้าร่วมฟรี</p>
+          <summary>ค่าสมัครเท่าไหร่</summary>
+          <!-- EDIT: ใส่ช่องทางชำระเงินจริง (พร้อมเพย์ / เลขบัญชี) ที่จะแจ้งใน Discord -->
+          <p>ค่าสมัคร 50 บาทต่อคน ที่นั่งจะถูกยืนยันเมื่อชำระเรียบร้อยและทีมงานตรวจสอบสลิปแล้ว ช่องทางชำระเงินแจ้งไว้ในห้องรับสมัครบน Discord</p>
         </details>
         <details>
           <summary>ผู้เล่นใหม่สมัครได้ไหม</summary>
@@ -608,11 +698,11 @@ footer{background:var(--ink-2);padding:3rem 0 2.2rem;font-size:.9rem}
 <section id="register" class="register">
   <div class="wrap reveal">
     <h2>พร้อมลงสนามหรือยัง</h2>
-    <p>รับเพียง 24 ที่นั่ง สมัครและติดตามประกาศทั้งหมดผ่าน Discord ของรายการ</p>
+    <p>รับเพียง 24 ที่นั่ง ค่าสมัคร 50 บาทต่อคน สมัครและติดตามประกาศทั้งหมดผ่าน Discord ของรายการ</p>
     <div class="hero-actions">
       <a class="btn btn-primary" href="https://discord.gg/yXu2bTZvS" target="_blank" rel="noopener">เข้า Discord เพื่อสมัคร</a>
     </div>
-    <p class="seats">รับ 24 ที่นั่ง · ปิดรับเมื่อครบจำนวน</p>
+    <p class="seats" id="seats-line">รับ 24 ที่นั่ง · ปิดรับเมื่อครบจำนวน</p>
   </div>
 </section>
 
@@ -642,6 +732,116 @@ footer{background:var(--ink-2);padding:3rem 0 2.2rem;font-size:.9rem}
 const TOURNAMENT_DATE = new Date(2026, 7, 29, 10, 0, 0);
 
 const pad = n => String(n).padStart(2,'0');
+
+/* ==================================================================
+   รายชื่อผู้เข้าร่วม — อัปเดตได้ 2 ทาง เลือกทางใดทางหนึ่ง
+
+   ทาง A (ง่ายสุด ไม่ต้องแตะโค้ดอีกเลย) — ดึงจาก Google Sheet
+     1. สร้างชีตใหม่ แถวแรกเป็นหัวตาราง:  name | ign
+     2. เมนู ไฟล์ > แชร์ > เผยแพร่ไปยังเว็บ > เลือกชีต > รูปแบบ "ค่าที่คั่นด้วยจุลภาค (.csv)" > เผยแพร่
+     3. ก๊อปลิงก์ที่ได้มาวางใน SHEET_CSV_URL ข้างล่าง (ทำครั้งเดียวจบ)
+     จากนั้นแค่พิมพ์ชื่อเพิ่มในชีต แล้วรีเฟรชหน้าเว็บ — รายชื่อขึ้นทันที
+
+   ทาง B — พิมพ์ลงใน PLAYERS ข้างล่างโดยตรง (ใช้เมื่อยังไม่ได้ตั้งชีต
+     และเป็นรายชื่อสำรองอัตโนมัติ เผื่อวันไหนโหลดชีตไม่ได้)
+   ================================================================== */
+const TOTAL_SEATS   = 24;
+const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQQdy0U9La2QcHlsSD1GcFvMze9Ypg69ugvwoP7DrddNBfVpLhsmFyvrK7UrcMYxszlpx7lxfQMjumg/pub?gid=905234825&single=true&output=csv';   /* EDIT: วางลิงก์ CSV ของ Google Sheet ตรงนี้ ถ้าเว้นว่างจะใช้ PLAYERS ข้างล่าง */
+
+const PLAYERS = [
+  { name:'Msk',   ign:'Msk' },
+  { name:'Lwoft', ign:'Lwolf' },
+];
+
+/* ---------- ตัวช่วย: แปลงข้อความ CSV เป็น [{name, ign}] ---------- */
+function parseCSV(text){
+  const rows = [];
+  let row = [], cell = '', quoted = false;
+  for(let i = 0; i < text.length; i++){
+    const c = text[i];
+    if(quoted){
+      if(c === '"'){ if(text[i+1] === '"'){ cell += '"'; i++; } else quoted = false; }
+      else cell += c;
+    } else if(c === '"'){ quoted = true; }
+    else if(c === ','){ row.push(cell); cell = ''; }
+    else if(c === '\n'){ row.push(cell); rows.push(row); row = []; cell = ''; }
+    else if(c !== '\r'){ cell += c; }
+  }
+  row.push(cell); rows.push(row);
+
+  return rows
+    .map(r => r.map(v => v.trim()))
+    .filter(r => r[0])                                   // ข้ามแถวว่าง
+    .filter((r,i) => !(i === 0 && /^(name|ชื่อ)$/i.test(r[0])))  // ข้ามหัวตาราง
+    .map(r => ({ name: r[0], ign: r[1] || '' }));
+}
+
+/* ---------- วาด section ที่นั่ง ---------- */
+function renderSeats(list){
+  const slots = document.getElementById('slots');
+  if(!slots) return;
+
+  const taken = list.slice(0, TOTAL_SEATS);
+  const left  = TOTAL_SEATS - taken.length;
+
+  document.getElementById('seat-left').textContent = pad(left);
+  document.getElementById('seatnum').classList.toggle('full', left === 0);
+
+  const seatsLine = document.getElementById('seats-line');
+  if(seatsLine){
+    seatsLine.textContent = left === 0
+      ? 'ที่นั่งเต็มแล้ว · แจ้งชื่อเป็นตัวสำรองได้ใน Discord'
+      : `เหลือ ${left} ที่นั่ง จาก ${TOTAL_SEATS} · ปิดรับเมื่อครบจำนวน`;
+  }
+
+  slots.textContent = '';
+  for(let i = 0; i < TOTAL_SEATS; i++){
+    const p = taken[i];
+    const box = document.createElement('div');
+    box.className = 'slot ' + (p ? 'taken' : 'free');
+
+    const no = document.createElement('span');
+    no.className = 'no';
+    no.textContent = pad(i + 1);
+
+    const nm = document.createElement('span');
+    nm.className = 'nm';
+    nm.textContent = p ? p.name : 'ที่นั่งว่าง';
+    if(p && p.ign){
+      const ign = document.createElement('span');
+      ign.className = 'ign';
+      ign.textContent = p.ign;
+      nm.appendChild(ign);
+    }
+
+    box.append(no, nm);
+    slots.appendChild(box);
+  }
+
+  /* แถบความคืบหน้า — วิ่งตอนเลื่อนมาถึง */
+  const bar = document.getElementById('seat-bar');
+  const grow = () => { bar.style.width = (taken.length / TOTAL_SEATS * 100) + '%'; };
+  if('IntersectionObserver' in window && !bar.style.width){
+    const ob = new IntersectionObserver(es=>{
+      es.forEach(e=>{ if(e.isIntersecting){ grow(); ob.disconnect(); } });
+    },{threshold:.4});
+    ob.observe(bar);
+  } else { grow(); }
+}
+
+/* วาดจากรายชื่อในไฟล์ก่อน (ขึ้นทันที ไม่มีจังหวะหน้าว่าง)
+   แล้วถ้าตั้งลิงก์ชีตไว้ ค่อยดึงของจริงมาทับ — โหลดไม่ได้ก็ใช้ของในไฟล์ต่อ */
+renderSeats(PLAYERS);
+
+if(SHEET_CSV_URL){
+  fetch(SHEET_CSV_URL + (SHEET_CSV_URL.includes('?') ? '&' : '?') + 't=' + Date.now())
+    .then(r => { if(!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
+    .then(text => {
+      const list = parseCSV(text);
+      if(list.length) renderSeats(list);
+    })
+    .catch(err => console.warn('โหลดรายชื่อจาก Google Sheet ไม่สำเร็จ ใช้รายชื่อในไฟล์แทน:', err));
+}
 const el = {d:document.getElementById('d'),h:document.getElementById('h'),
             m:document.getElementById('m'),s:document.getElementById('s')};
 
