@@ -80,6 +80,19 @@ a{color:inherit}
 .nav-cta:hover{background:var(--gold);color:var(--ink)}
 @media(max-width:940px){.nav ul{display:none}}
 
+/* ---- ปุ่มสลับภาษา ---- */
+.nav-right{display:flex;align-items:center;gap:.7rem;flex:none}
+.lang{
+  display:flex;font-family:var(--data);font-weight:700;font-size:.7rem;
+  letter-spacing:.1em;line-height:1;cursor:pointer;padding:0;
+  background:transparent;color:var(--paper);
+  border:1px solid rgba(243,233,214,.3);
+}
+.lang span{padding:.44rem .58rem;opacity:.55;transition:background .2s,color .2s,opacity .2s}
+.lang span.on{background:var(--gold);color:var(--ink);opacity:1}
+.lang:hover{border-color:var(--gold)}
+@media(max-width:420px){.lang span{padding:.42rem .45rem}}
+
 /* ================= HERO ================= */
 .hero{
   position:relative;padding:clamp(2rem,4.5vw,3.4rem) 0 clamp(3rem,6vw,4.5rem);
@@ -390,14 +403,19 @@ footer{background:var(--ink-2);padding:3rem 0 2.2rem;font-size:.9rem}
   <div class="wrap">
     <div class="brand">MARVEL DUEL <span>THAILAND</span><em>by Wolf Pack</em></div>
     <ul>
-      <li><a href="#seats">ผู้เข้าร่วม</a></li>
-      <li><a href="#format">รูปแบบการแข่ง</a></li>
-      <li><a href="#points">คะแนนรอบชิง</a></li>
-      <li><a href="#prizes">รางวัล</a></li>
-      <li><a href="#judges">กรรมการ</a></li>
-      <li><a href="#faq">คำถามที่พบบ่อย</a></li>
+      <li><a href="#seats" data-en="Players">ผู้เข้าร่วม</a></li>
+      <li><a href="#format" data-en="Format">รูปแบบการแข่ง</a></li>
+      <li><a href="#points" data-en="Scoring">คะแนนรอบชิง</a></li>
+      <li><a href="#prizes" data-en="Prizes">รางวัล</a></li>
+      <li><a href="#judges" data-en="Judges">กรรมการ</a></li>
+      <li><a href="#faq" data-en="FAQ">คำถามที่พบบ่อย</a></li>
     </ul>
-    <a class="nav-cta" href="https://discord.gg/yXu2bTZvS" target="_blank" rel="noopener">สมัครแข่ง</a>
+    <div class="nav-right">
+      <button class="lang" id="lang-toggle" type="button" aria-label="Language / เปลี่ยนภาษา">
+        <span data-lang="th">TH</span><span data-lang="en">EN</span>
+      </button>
+      <a class="nav-cta" href="https://discord.gg/yXu2bTZvS" target="_blank" rel="noopener" data-en="Register">สมัครแข่ง</a>
+    </div>
   </div>
 </nav>
 
@@ -406,10 +424,10 @@ footer{background:var(--ink-2);padding:3rem 0 2.2rem;font-size:.9rem}
 
     <figure class="keyart">
       <img src="assets/marvel-duel-key-art.jpg" width="1179" height="553"
-           alt="คีย์อาร์ตเกม Marvel Duel — ธอร์ปะทะไอรอนแมน" decoding="async">
+           alt="คีย์อาร์ตเกม Marvel Duel — ธอร์ปะทะไอรอนแมน" data-en-alt="Marvel Duel key art — Thor versus Iron Man" decoding="async">
     </figure>
 
-    <p class="eyebrow">ศึกดวลการ์ดออนไลน์ ชิงแชมป์ประเทศไทย</p>
+    <p class="eyebrow" data-en="Thailand's online card duel championship">ศึกดวลการ์ดออนไลน์ ชิงแชมป์ประเทศไทย</p>
 
     <h1 class="title">
       <i class="t1"><b>MARVEL DUEL</b></i>
@@ -422,8 +440,8 @@ footer{background:var(--ink-2);padding:3rem 0 2.2rem;font-size:.9rem}
       <article class="card card-a">
         <div class="pip">24</div>
         <p class="stage">Group Stage</p>
-        <p class="name">รอบแบ่งกลุ่ม<br>4 กลุ่ม</p>
-        <p class="meta">กลุ่มละ 6 คน · เข้ารอบกลุ่มละ 3</p>
+        <p class="name" data-en="Group<br>Stage">รอบแบ่งกลุ่ม<br>4 กลุ่ม</p>
+        <p class="meta" data-en="6 per group · top 3 advance">กลุ่มละ 6 คน · เข้ารอบกลุ่มละ 3</p>
       </article>
 
       <div class="vs">VS</div>
@@ -431,23 +449,23 @@ footer{background:var(--ink-2);padding:3rem 0 2.2rem;font-size:.9rem}
       <article class="card card-b">
         <div class="pip">6</div>
         <p class="stage">Grand Final</p>
-        <p class="name">รอบชิง<br>ชนะเลิศ</p>
-        <p class="meta">3 เกม · เก็บคะแนนรวม</p>
+        <p class="name" data-en="Grand<br>Final">รอบชิง<br>ชนะเลิศ</p>
+        <p class="meta" data-en="3 games · cumulative points">3 เกม · เก็บคะแนนรวม</p>
       </article>
     </div>
 
     <div class="count" id="count">
-      <div><b id="d">--</b><small>วัน</small></div>
-      <div><b id="h">--</b><small>ชั่วโมง</small></div>
-      <div><b id="m">--</b><small>นาที</small></div>
-      <div><b id="s">--</b><small>วินาที</small></div>
+      <div><b id="d">--</b><small data-en="Days">วัน</small></div>
+      <div><b id="h">--</b><small data-en="Hours">ชั่วโมง</small></div>
+      <div><b id="m">--</b><small data-en="Minutes">นาที</small></div>
+      <div><b id="s">--</b><small data-en="Seconds">วินาที</small></div>
     </div>
 
-    <p class="when-line">เสาร์ที่ <b>29 สิงหาคม 2569</b> · เริ่ม <b>10:00 น.</b> · แข่งออนไลน์ล้วน</p>
+    <p class="when-line" data-en="Saturday <b>29 August 2026</b> · starts <b>10:00 ICT</b> · fully online">เสาร์ที่ <b>29 สิงหาคม 2569</b> · เริ่ม <b>10:00 น.</b> · แข่งออนไลน์ล้วน</p>
 
     <div class="hero-actions">
-      <a class="btn btn-primary" href="https://discord.gg/yXu2bTZvS" target="_blank" rel="noopener">สมัครทาง Discord</a>
-      <a class="btn btn-ghost" href="#format">ดูรูปแบบการแข่ง</a>
+      <a class="btn btn-primary" href="https://discord.gg/yXu2bTZvS" target="_blank" rel="noopener" data-en="Register on Discord">สมัครทาง Discord</a>
+      <a class="btn btn-ghost" href="#format" data-en="See the format">ดูรูปแบบการแข่ง</a>
     </div>
 
   </div>
@@ -455,28 +473,28 @@ footer{background:var(--ink-2);padding:3rem 0 2.2rem;font-size:.9rem}
 
 <div class="ticker" aria-hidden="true">
   <div>
-    <span>รับ 24 ที่นั่ง</span><span>◆</span><span>แข่งออนไลน์ล้วน</span><span>◆</span>
-    <span>ค่าสมัคร 50 บาท</span><span>◆</span><span>เงินรางวัลรวม 3,300 บาท</span><span>◆</span>
-    <span>รับ 24 ที่นั่ง</span><span>◆</span><span>แข่งออนไลน์ล้วน</span><span>◆</span>
-    <span>ค่าสมัคร 50 บาท</span><span>◆</span><span>เงินรางวัลรวม 3,300 บาท</span><span>◆</span>
+    <span data-en="24 seats only">รับ 24 ที่นั่ง</span><span>◆</span><span data-en="Fully online">แข่งออนไลน์ล้วน</span><span>◆</span>
+    <span data-en="50 THB entry">ค่าสมัคร 50 บาท</span><span>◆</span><span data-en="3,300 THB prize pool">เงินรางวัลรวม 3,300 บาท</span><span>◆</span>
+    <span data-en="24 seats only">รับ 24 ที่นั่ง</span><span>◆</span><span data-en="Fully online">แข่งออนไลน์ล้วน</span><span>◆</span>
+    <span data-en="50 THB entry">ค่าสมัคร 50 บาท</span><span>◆</span><span data-en="3,300 THB prize pool">เงินรางวัลรวม 3,300 บาท</span><span>◆</span>
   </div>
 </div>
 
 <section id="seats" class="seats-sec">
   <div class="wrap">
     <div class="head reveal">
-      <p class="kicker">ผู้เข้าร่วม</p>
-      <h2>ที่นั่งเหลือเท่าไหร่</h2>
-      <p>รับ 24 ที่นั่ง ค่าสมัคร 50 บาทต่อคน ที่นั่งจะขึ้นเป็น “ยืนยันแล้ว” เมื่อทีมงานตรวจสอบการชำระเงินเรียบร้อย</p>
+      <p class="kicker" data-en="Players">ผู้เข้าร่วม</p>
+      <h2 data-en="How many seats are left">ที่นั่งเหลือเท่าไหร่</h2>
+      <p data-en="24 seats, 50 THB per player. A seat is confirmed once the team has verified the payment.">รับ 24 ที่นั่ง ค่าสมัคร 50 บาทต่อคน ที่นั่งจะขึ้นเป็น “ยืนยันแล้ว” เมื่อทีมงานตรวจสอบการชำระเงินเรียบร้อย</p>
     </div>
 
     <div class="seatwrap reveal">
       <div class="seatnum" id="seatnum">
-        <p class="lead">ที่นั่งว่าง</p>
+        <p class="lead" data-en="Seats left">ที่นั่งว่าง</p>
         <b id="seat-left">24</b>
-        <p class="of">จากทั้งหมด 24 ที่นั่ง</p>
+        <p class="of" data-en="Out of 24 seats">จากทั้งหมด 24 ที่นั่ง</p>
         <div class="seatbar"><i id="seat-bar"></i></div>
-        <p class="fee">ค่าสมัคร 50 บาท / คน</p>
+        <p class="fee" data-en="50 THB per player">ค่าสมัคร 50 บาท / คน</p>
       </div>
 
       <div class="slots" id="slots"></div>
@@ -487,16 +505,16 @@ footer{background:var(--ink-2);padding:3rem 0 2.2rem;font-size:.9rem}
 <section id="format" class="on-paper">
   <div class="wrap">
     <div class="head reveal">
-      <p class="kicker">รูปแบบการแข่งขัน</p>
-      <h2>24 คน<br>เหลือ 1 แชมป์</h2>
-      <p>ตัดตัวสองครั้ง จากรอบแบ่งกลุ่มสู่รอบรองชนะเลิศ แล้วเข้าสู่รอบชิงชนะเลิศ 6 คนสุดท้าย</p>
+      <p class="kicker" data-en="Tournament format">รูปแบบการแข่งขัน</p>
+      <h2 data-en="24 players<br>one champion">24 คน<br>เหลือ 1 แชมป์</h2>
+      <p data-en="Two cuts — group stage into the semi-finals, then a six-player grand final.">ตัดตัวสองครั้ง จากรอบแบ่งกลุ่มสู่รอบรองชนะเลิศ แล้วเข้าสู่รอบชิงชนะเลิศ 6 คนสุดท้าย</p>
     </div>
 
     <div class="flow reveal">
       <div class="stagebox">
         <p class="lbl">Stage 01</p>
-        <h3>24 คน</h3>
-        <p class="sub">รอบแบ่งกลุ่ม · 4 กลุ่ม กลุ่มละ 6 คน</p>
+        <h3 data-en="24 players">24 คน</h3>
+        <p class="sub" data-en="Group stage · 4 groups of 6">รอบแบ่งกลุ่ม · 4 กลุ่ม กลุ่มละ 6 คน</p>
         <div class="pods">
           <div class="pod">A</div><div class="pod">B</div><div class="pod">C</div><div class="pod">D</div>
         </div>
@@ -506,8 +524,8 @@ footer{background:var(--ink-2);padding:3rem 0 2.2rem;font-size:.9rem}
 
       <div class="stagebox">
         <p class="lbl">Stage 02</p>
-        <h3>12 คน</h3>
-        <p class="sub">รอบรองชนะเลิศ · 2 กลุ่ม กลุ่มละ 6 คน</p>
+        <h3 data-en="12 players">12 คน</h3>
+        <p class="sub" data-en="Semi-finals · 2 groups of 6">รอบรองชนะเลิศ · 2 กลุ่ม กลุ่มละ 6 คน</p>
         <div class="pods">
           <div class="pod">A</div><div class="pod">B</div>
         </div>
@@ -517,8 +535,8 @@ footer{background:var(--ink-2);padding:3rem 0 2.2rem;font-size:.9rem}
 
       <div class="stagebox final">
         <p class="lbl">Stage 03</p>
-        <h3>6 คน</h3>
-        <p class="sub">รอบชิงชนะเลิศ · เก็บคะแนน 3 เกม</p>
+        <h3 data-en="6 players">6 คน</h3>
+        <p class="sub" data-en="Grand final · 3 scored games">รอบชิงชนะเลิศ · เก็บคะแนน 3 เกม</p>
         <div class="pods">
           <div class="pod">FINAL</div>
         </div>
@@ -527,15 +545,15 @@ footer{background:var(--ink-2);padding:3rem 0 2.2rem;font-size:.9rem}
 
     <div class="two reveal">
       <ul class="rules">
-        <li><b>รอบแบ่งกลุ่ม</b> — ผู้เล่น 24 คน แบ่ง 4 กลุ่ม กลุ่มละ 6 คน อันดับ 1–3 ของแต่ละกลุ่มผ่านเข้ารอบต่อไป</li>
-        <li><b>รอบรองชนะเลิศ</b> — ผู้เล่น 12 คน แบ่ง 2 กลุ่ม กลุ่มละ 6 คน อันดับ 1–3 ของแต่ละกลุ่มเข้าชิงชนะเลิศ</li>
-        <li><b>รอบชิงชนะเลิศ</b> — ผู้เล่น 6 คนสุดท้าย แข่ง 3 เกม เก็บคะแนนสะสม คะแนนรวมสูงสุดเป็นแชมป์</li>
+        <li data-en="<b>Group stage</b> — 24 players split into 4 groups of 6. The top 3 of each group advance."><b>รอบแบ่งกลุ่ม</b> — ผู้เล่น 24 คน แบ่ง 4 กลุ่ม กลุ่มละ 6 คน อันดับ 1–3 ของแต่ละกลุ่มผ่านเข้ารอบต่อไป</li>
+        <li data-en="<b>Semi-finals</b> — 12 players split into 2 groups of 6. The top 3 of each group reach the grand final."><b>รอบรองชนะเลิศ</b> — ผู้เล่น 12 คน แบ่ง 2 กลุ่ม กลุ่มละ 6 คน อันดับ 1–3 ของแต่ละกลุ่มเข้าชิงชนะเลิศ</li>
+        <li data-en="<b>Grand final</b> — the last 6 players play 3 games. Points accumulate, and the highest total takes the title."><b>รอบชิงชนะเลิศ</b> — ผู้เล่น 6 คนสุดท้าย แข่ง 3 เกม เก็บคะแนนสะสม คะแนนรวมสูงสุดเป็นแชมป์</li>
       </ul>
       <!-- EDIT: ถ้ามีเกณฑ์จัดอันดับในรอบกลุ่ม/รอบรอง (เช่น นับชัยชนะ หรือใช้คะแนนแบบเดียวกับรอบชิง) เติมตรงนี้ -->
       <ul class="rules">
-        <li><b>แข่งออนไลน์ทั้งรายการ</b> — ไม่ต้องเดินทาง เล่นจากที่ไหนก็ได้</li>
-        <li><b>ค่าสมัคร 50 บาทต่อคน</b> — ชำระเพื่อยืนยันที่นั่ง เปิดรับผู้เล่นทุกระดับ ไม่จำกัดอันดับในเกม</li>
-        <li><b>ที่นั่งจำกัด 24 คน</b> — ปิดรับทันทีเมื่อครบจำนวน</li>
+        <li data-en="<b>Online from start to finish</b> — no travel, play from anywhere."><b>แข่งออนไลน์ทั้งรายการ</b> — ไม่ต้องเดินทาง เล่นจากที่ไหนก็ได้</li>
+        <li data-en="<b>50 THB per player</b> — payment confirms your seat. Open to every skill level, no rank requirement."><b>ค่าสมัคร 50 บาทต่อคน</b> — ชำระเพื่อยืนยันที่นั่ง เปิดรับผู้เล่นทุกระดับ ไม่จำกัดอันดับในเกม</li>
+        <li data-en="<b>Capped at 24 seats</b> — registration closes the moment they fill up."><b>ที่นั่งจำกัด 24 คน</b> — ปิดรับทันทีเมื่อครบจำนวน</li>
       </ul>
     </div>
   </div>
@@ -544,41 +562,41 @@ footer{background:var(--ink-2);padding:3rem 0 2.2rem;font-size:.9rem}
 <section id="points">
   <div class="wrap">
     <div class="head reveal">
-      <p class="kicker">รอบชิงชนะเลิศ</p>
-      <h2>คะแนนต่อเกม</h2>
-      <p>รอบชิงชนะเลิศแข่ง 3 เกม แต่ละเกมให้คะแนนตามอันดับที่จบ นำคะแนนทั้ง 3 เกมมารวมกันเพื่อหาแชมป์ คะแนนเต็ม 21 คะแนน</p>
+      <p class="kicker" data-en="Grand final">รอบชิงชนะเลิศ</p>
+      <h2 data-en="Points per game">คะแนนต่อเกม</h2>
+      <p data-en="The grand final runs 3 games. Each game awards points by finishing position, and all 3 games are added up to crown the champion — 21 points maximum.">รอบชิงชนะเลิศแข่ง 3 เกม แต่ละเกมให้คะแนนตามอันดับที่จบ นำคะแนนทั้ง 3 เกมมารวมกันเพื่อหาแชมป์ คะแนนเต็ม 21 คะแนน</p>
     </div>
 
     <div class="ladder reveal">
       <div class="rung top">
-        <span class="pos">ที่ 1</span>
+        <span class="pos" data-en="1st">ที่ 1</span>
         <span class="track"><span class="bar" style="width:100%"></span></span>
-        <span class="pts">7 คะแนน</span>
+        <span class="pts" data-en="7 pts">7 คะแนน</span>
       </div>
       <div class="rung">
-        <span class="pos">ที่ 2</span>
+        <span class="pos" data-en="2nd">ที่ 2</span>
         <span class="track"><span class="bar" style="width:71%"></span></span>
-        <span class="pts">5 คะแนน</span>
+        <span class="pts" data-en="5 pts">5 คะแนน</span>
       </div>
       <div class="rung">
-        <span class="pos">ที่ 3</span>
+        <span class="pos" data-en="3rd">ที่ 3</span>
         <span class="track"><span class="bar" style="width:43%"></span></span>
-        <span class="pts">3 คะแนน</span>
+        <span class="pts" data-en="3 pts">3 คะแนน</span>
       </div>
       <div class="rung">
-        <span class="pos">ที่ 4</span>
+        <span class="pos" data-en="4th">ที่ 4</span>
         <span class="track"><span class="bar" style="width:29%"></span></span>
-        <span class="pts">2 คะแนน</span>
+        <span class="pts" data-en="2 pts">2 คะแนน</span>
       </div>
       <div class="rung">
-        <span class="pos">ที่ 5</span>
+        <span class="pos" data-en="5th">ที่ 5</span>
         <span class="track"><span class="bar" style="width:14%"></span></span>
-        <span class="pts">1 คะแนน</span>
+        <span class="pts" data-en="1 pts">1 คะแนน</span>
       </div>
       <div class="rung">
-        <span class="pos">ที่ 6</span>
+        <span class="pos" data-en="6th">ที่ 6</span>
         <span class="track"></span>
-        <span class="pts">0 คะแนน</span>
+        <span class="pts" data-en="0 pts">0 คะแนน</span>
       </div>
     </div>
   </div>
@@ -587,29 +605,29 @@ footer{background:var(--ink-2);padding:3rem 0 2.2rem;font-size:.9rem}
 <section id="prizes" class="on-paper">
   <div class="wrap">
     <div class="head reveal">
-      <p class="kicker">เงินรางวัล</p>
-      <h2>รวม 3,300 บาท</h2>
-      <p>รวมรางวัลขวัญใจผู้ชม ซึ่งตัดสินจากคะแนนโหวตของผู้ชม</p>
+      <p class="kicker" data-en="Prize pool">เงินรางวัล</p>
+      <h2 data-en="3,300 THB total">รวม 3,300 บาท</h2>
+      <p data-en="Includes the fan favourite prize, decided by viewer votes.">รวมรางวัลขวัญใจผู้ชม ซึ่งตัดสินจากคะแนนโหวตของผู้ชม</p>
     </div>
 
     <!-- EDIT: ถ้าปรับยอดรวมเป็น 3,500 อย่าลืมแก้ทั้งหัวข้อด้านบน แถบวิ่ง และ meta og:description -->
     <div class="prizes reveal">
       <div class="prize">
-        <p class="rank">รองชนะเลิศ</p>
+        <p class="rank" data-en="Runner-up">รองชนะเลิศ</p>
         <p class="amt">1,000฿</p>
       </div>
       <div class="prize first">
-        <p class="rank">ชนะเลิศ</p>
+        <p class="rank" data-en="Champion">ชนะเลิศ</p>
         <p class="amt">1,500฿</p>
       </div>
       <div class="prize">
-        <p class="rank">อันดับ 3</p>
+        <p class="rank" data-en="Third place">อันดับ 3</p>
         <p class="amt">500฿</p>
       </div>
       <div class="prize special">
-        <p class="rank">ขวัญใจผู้ชม</p>
+        <p class="rank" data-en="Fan favourite">ขวัญใจผู้ชม</p>
         <p class="amt">300฿</p>
-        <p class="extra">ผู้ชมเป็นผู้โหวต</p>
+        <p class="extra" data-en="Voted by viewers">ผู้ชมเป็นผู้โหวต</p>
       </div>
     </div>
   </div>
@@ -618,9 +636,9 @@ footer{background:var(--ink-2);padding:3rem 0 2.2rem;font-size:.9rem}
 <section id="judges">
   <div class="wrap">
     <div class="head reveal">
-      <p class="kicker">คณะกรรมการ</p>
-      <h2>ผู้ตัดสิน</h2>
-      <p>คำตัดสินของกรรมการถือเป็นที่สิ้นสุด ติดต่อกรรมการได้โดยตรงหากมีข้อโต้แย้งระหว่างแข่ง</p>
+      <p class="kicker" data-en="Officials">คณะกรรมการ</p>
+      <h2 data-en="The judges">ผู้ตัดสิน</h2>
+      <p data-en="Judges have the final say. Contact a judge directly if a dispute comes up mid-match.">คำตัดสินของกรรมการถือเป็นที่สิ้นสุด ติดต่อกรรมการได้โดยตรงหากมีข้อโต้แย้งระหว่างแข่ง</p>
     </div>
 
     <div class="judges reveal">
@@ -628,14 +646,14 @@ footer{background:var(--ink-2);padding:3rem 0 2.2rem;font-size:.9rem}
         <div class="av">W</div>
         <div>
           <p class="who">Whytechoc Ornz</p>
-          <p class="role">กรรมการ</p>
+          <p class="role" data-en="Judge">กรรมการ</p>
         </div>
       </a>
       <a class="judge" href="https://www.facebook.com/mildsakimsk" target="_blank" rel="noopener">
         <div class="av">M</div>
         <div>
           <p class="who">Msk</p>
-          <p class="role">กรรมการ</p>
+          <p class="role" data-en="Judge">กรรมการ</p>
         </div>
       </a>
     </div>
@@ -647,48 +665,48 @@ footer{background:var(--ink-2);padding:3rem 0 2.2rem;font-size:.9rem}
     <div class="two">
       <div class="reveal">
         <div class="head">
-          <p class="kicker">กติกาสำคัญ</p>
-          <h2>อ่านก่อนสมัคร</h2>
+          <p class="kicker" data-en="Key rules">กติกาสำคัญ</p>
+          <h2 data-en="Read before you register">อ่านก่อนสมัคร</h2>
         </div>
         <ul class="rules">
-          <li>ใช้บัญชีของตนเองเท่านั้น ห้ามให้ผู้อื่นเล่นแทนทุกกรณี</li>
-          <li>มาสายเกิน 10 นาทีหลังเรียกแมตช์ ถือว่าสละสิทธิ์ในเกมนั้น</li>
-          <li>อยู่ในห้อง Discord ของรายการตลอดการแข่งขัน เพื่อรับการเรียกคิวและประกาศจากทีมงาน</li>
-          <li>บันทึกวิดีโอหน้าจอไว้ เพื่อใช้ตรวจสอบเมื่อมีข้อโต้แย้ง</li>
-          <li>ปัญหาการเชื่อมต่อฝั่งผู้เล่นไม่ถือเป็นเหตุให้แข่งใหม่ ยกเว้นเซิร์ฟเวอร์เกมล่ม</li>
-          <li>คำตัดสินของกรรมการถือเป็นที่สิ้นสุด</li>
+          <li data-en="Play on your own account only — no one may play on your behalf, for any reason.">ใช้บัญชีของตนเองเท่านั้น ห้ามให้ผู้อื่นเล่นแทนทุกกรณี</li>
+          <li data-en="More than 10 minutes late after a match is called counts as a forfeit for that game.">มาสายเกิน 10 นาทีหลังเรียกแมตช์ ถือว่าสละสิทธิ์ในเกมนั้น</li>
+          <li data-en="Stay in the tournament Discord throughout the event to catch queue calls and announcements.">อยู่ในห้อง Discord ของรายการตลอดการแข่งขัน เพื่อรับการเรียกคิวและประกาศจากทีมงาน</li>
+          <li data-en="Record your screen so it can be reviewed if a dispute arises.">บันทึกวิดีโอหน้าจอไว้ เพื่อใช้ตรวจสอบเมื่อมีข้อโต้แย้ง</li>
+          <li data-en="Connection problems on the player side are not grounds for a rematch, unless the game server itself goes down.">ปัญหาการเชื่อมต่อฝั่งผู้เล่นไม่ถือเป็นเหตุให้แข่งใหม่ ยกเว้นเซิร์ฟเวอร์เกมล่ม</li>
+          <li data-en="The judges' decision is final.">คำตัดสินของกรรมการถือเป็นที่สิ้นสุด</li>
         </ul>
       </div>
 
       <div class="reveal">
         <div class="head">
-          <p class="kicker">คำถามที่พบบ่อย</p>
-          <h2>สงสัยตรงไหน</h2>
+          <p class="kicker" data-en="FAQ">คำถามที่พบบ่อย</p>
+          <h2 data-en="Common questions">สงสัยตรงไหน</h2>
         </div>
         <details>
-          <summary>สมัครยังไง</summary>
-          <p>เข้า Discord ของรายการแล้วทำตามขั้นตอนในห้องรับสมัคร ทีมงานจะยืนยันที่นั่งให้ในห้องเดียวกัน</p>
+          <summary data-en="How do I register?">สมัครยังไง</summary>
+          <p data-en="Join the tournament Discord and follow the steps in the registration channel. The team confirms your seat in that same channel.">เข้า Discord ของรายการแล้วทำตามขั้นตอนในห้องรับสมัคร ทีมงานจะยืนยันที่นั่งให้ในห้องเดียวกัน</p>
         </details>
         <details>
-          <summary>ค่าสมัครเท่าไหร่</summary>
+          <summary data-en="How much is the entry fee?">ค่าสมัครเท่าไหร่</summary>
           <!-- EDIT: ใส่ช่องทางชำระเงินจริง (พร้อมเพย์ / เลขบัญชี) ที่จะแจ้งใน Discord -->
-          <p>ค่าสมัคร 50 บาทต่อคน ที่นั่งจะถูกยืนยันเมื่อชำระเรียบร้อยและทีมงานตรวจสอบสลิปแล้ว ช่องทางชำระเงินแจ้งไว้ในห้องรับสมัครบน Discord</p>
+          <p data-en="50 THB per player. Your seat is confirmed once payment is made and the team has checked the receipt. Payment details are posted in the registration channel on Discord.">ค่าสมัคร 50 บาทต่อคน ที่นั่งจะถูกยืนยันเมื่อชำระเรียบร้อยและทีมงานตรวจสอบสลิปแล้ว ช่องทางชำระเงินแจ้งไว้ในห้องรับสมัครบน Discord</p>
         </details>
         <details>
-          <summary>ผู้เล่นใหม่สมัครได้ไหม</summary>
-          <p>ได้ ไม่มีเกณฑ์อันดับขั้นต่ำ ขอแค่มีบัญชีที่เข้าเล่นได้ปกติ</p>
+          <summary data-en="Can new players enter?">ผู้เล่นใหม่สมัครได้ไหม</summary>
+          <p data-en="Yes. There is no minimum rank — you just need a working account.">ได้ ไม่มีเกณฑ์อันดับขั้นต่ำ ขอแค่มีบัญชีที่เข้าเล่นได้ปกติ</p>
         </details>
         <details>
-          <summary>ที่นั่งเต็มแล้วทำยังไง</summary>
-          <p>รายการรับ 24 คน หากเต็มแล้วแจ้งชื่อไว้เป็นตัวสำรองใน Discord ได้ ทีมงานจะติดต่อกลับหากมีผู้สละสิทธิ์</p>
+          <summary data-en="What if the seats are full?">ที่นั่งเต็มแล้วทำยังไง</summary>
+          <p data-en="The tournament takes 24 players. If it is full, leave your name on the reserve list in Discord and the team will reach out if someone drops.">รายการรับ 24 คน หากเต็มแล้วแจ้งชื่อไว้เป็นตัวสำรองใน Discord ได้ ทีมงานจะติดต่อกลับหากมีผู้สละสิทธิ์</p>
         </details>
         <details>
-          <summary>ใช้เวลาแข่งทั้งวันไหม</summary>
-          <p>เริ่ม 10:00 น. แข่งต่อเนื่องตั้งแต่รอบแบ่งกลุ่มจนถึงรอบชิงชนะเลิศ กรุณาเผื่อเวลาไว้ทั้งวัน</p>
+          <summary data-en="Does it take the whole day?">ใช้เวลาแข่งทั้งวันไหม</summary>
+          <p data-en="It starts at 10:00 and runs straight through from the group stage to the grand final, so please set aside the full day.">เริ่ม 10:00 น. แข่งต่อเนื่องตั้งแต่รอบแบ่งกลุ่มจนถึงรอบชิงชนะเลิศ กรุณาเผื่อเวลาไว้ทั้งวัน</p>
         </details>
         <details>
-          <summary>รางวัลขวัญใจผู้ชมตัดสินยังไง</summary>
-          <p>ผู้ชมเป็นผู้โหวต รายละเอียดวิธีโหวตจะประกาศใน Discord ก่อนวันแข่ง</p>
+          <summary data-en="How is the fan favourite decided?">รางวัลขวัญใจผู้ชมตัดสินยังไง</summary>
+          <p data-en="Viewers vote. How to vote will be announced in Discord before tournament day.">ผู้ชมเป็นผู้โหวต รายละเอียดวิธีโหวตจะประกาศใน Discord ก่อนวันแข่ง</p>
         </details>
       </div>
     </div>
@@ -697,10 +715,10 @@ footer{background:var(--ink-2);padding:3rem 0 2.2rem;font-size:.9rem}
 
 <section id="register" class="register">
   <div class="wrap reveal">
-    <h2>พร้อมลงสนามหรือยัง</h2>
-    <p>รับเพียง 24 ที่นั่ง ค่าสมัคร 50 บาทต่อคน สมัครและติดตามประกาศทั้งหมดผ่าน Discord ของรายการ</p>
+    <h2 data-en="Ready to step in?">พร้อมลงสนามหรือยัง</h2>
+    <p data-en="Only 24 seats, 50 THB per player. Register and follow every announcement through the tournament Discord.">รับเพียง 24 ที่นั่ง ค่าสมัคร 50 บาทต่อคน สมัครและติดตามประกาศทั้งหมดผ่าน Discord ของรายการ</p>
     <div class="hero-actions">
-      <a class="btn btn-primary" href="https://discord.gg/yXu2bTZvS" target="_blank" rel="noopener">เข้า Discord เพื่อสมัคร</a>
+      <a class="btn btn-primary" href="https://discord.gg/yXu2bTZvS" target="_blank" rel="noopener" data-en="Join Discord to register">เข้า Discord เพื่อสมัคร</a>
     </div>
     <p class="seats" id="seats-line">รับ 24 ที่นั่ง · ปิดรับเมื่อครบจำนวน</p>
   </div>
@@ -711,7 +729,7 @@ footer{background:var(--ink-2);padding:3rem 0 2.2rem;font-size:.9rem}
     <div class="foot">
       <div>
         <div class="brand" style="margin-bottom:.7rem">MARVEL DUEL <span>THAILAND</span><em>by Wolf Pack</em></div>
-        <p style="opacity:.7;max-width:36ch">รายการแข่งขันที่จัดโดยชุมชนผู้เล่นในประเทศไทย</p>
+        <p style="opacity:.7;max-width:36ch" data-en="A tournament run by the player community in Thailand.">รายการแข่งขันที่จัดโดยชุมชนผู้เล่นในประเทศไทย</p>
       </div>
       <ul class="socials">
         <li><a href="https://discord.gg/yXu2bTZvS" target="_blank" rel="noopener">Discord</a></li>
@@ -719,7 +737,7 @@ footer{background:var(--ink-2);padding:3rem 0 2.2rem;font-size:.9rem}
         <li><a href="https://www.facebook.com/mildsakimsk" target="_blank" rel="noopener">Msk</a></li>
       </ul>
     </div>
-    <p class="disclaimer">
+    <p class="disclaimer" data-en="This event is run by an independent group of players and is not associated with, endorsed by, or sponsored by Marvel, The Walt Disney Company, or NetEase. All game names and trademarks are the property of their respective rights holders.">
       รายการนี้จัดโดยกลุ่มผู้เล่นอิสระ ไม่ได้มีส่วนเกี่ยวข้อง ได้รับการรับรอง หรือสนับสนุนโดย Marvel, The Walt Disney Company หรือ NetEase
       ชื่อเกมและเครื่องหมายการค้าทั้งหมดเป็นทรัพย์สินของเจ้าของสิทธิ์ตามกฎหมาย
     </p>
@@ -776,10 +794,29 @@ function parseCSV(text){
     .map(r => ({ name: r[0], ign: r[1] || '' }));
 }
 
+/* ---------- ข้อความที่ JS สร้างเอง (ต้องมีทั้งสองภาษา) ---------- */
+const STR = {
+  th:{
+    title:'MARVEL DUEL THAILAND TOURNAMENT BY WOLF PACK — 29 สิงหาคม 2569',
+    emptySeat:'ที่นั่งว่าง',
+    full:'ที่นั่งเต็มแล้ว · แจ้งชื่อเป็นตัวสำรองได้ใน Discord',
+    left:n => `เหลือ ${n} ที่นั่ง จาก ${TOTAL_SEATS} · ปิดรับเมื่อครบจำนวน`
+  },
+  en:{
+    title:'MARVEL DUEL THAILAND TOURNAMENT BY WOLF PACK — 29 August 2026',
+    emptySeat:'Open seat',
+    full:'All seats taken · join the reserve list on Discord',
+    left:n => `${n} of ${TOTAL_SEATS} seats left · closes when full`
+  }
+};
+let LANG = 'th';
+
 /* ---------- วาด section ที่นั่ง ---------- */
+let LAST_LIST = [];
 function renderSeats(list){
   const slots = document.getElementById('slots');
   if(!slots) return;
+  LAST_LIST = list;
 
   const taken = list.slice(0, TOTAL_SEATS);
   const left  = TOTAL_SEATS - taken.length;
@@ -789,9 +826,7 @@ function renderSeats(list){
 
   const seatsLine = document.getElementById('seats-line');
   if(seatsLine){
-    seatsLine.textContent = left === 0
-      ? 'ที่นั่งเต็มแล้ว · แจ้งชื่อเป็นตัวสำรองได้ใน Discord'
-      : `เหลือ ${left} ที่นั่ง จาก ${TOTAL_SEATS} · ปิดรับเมื่อครบจำนวน`;
+    seatsLine.textContent = left === 0 ? STR[LANG].full : STR[LANG].left(left);
   }
 
   slots.textContent = '';
@@ -806,7 +841,7 @@ function renderSeats(list){
 
     const nm = document.createElement('span');
     nm.className = 'nm';
-    nm.textContent = p ? p.name : 'ที่นั่งว่าง';
+    nm.textContent = p ? p.name : STR[LANG].emptySeat;
     if(p && p.ign){
       const ign = document.createElement('span');
       ign.className = 'ign';
@@ -829,9 +864,48 @@ function renderSeats(list){
   } else { grow(); }
 }
 
+/* ==================================================================
+   สลับภาษา ไทย / อังกฤษ
+   คำแปลอังกฤษเก็บไว้ในแอตทริบิวต์ data-en ของแต่ละ element ในหน้า
+   (ภาพ ใช้ data-en-alt) ส่วนข้อความที่ JS สร้างเองอยู่ในตัวแปร STR ข้างบน
+   เพิ่มข้อความใหม่ = ใส่ data-en="..." ที่ tag นั้น เท่านั้น ไม่ต้องแก้โค้ดตรงนี้
+   ================================================================== */
+function initLang(){
+  const nodes  = [...document.querySelectorAll('[data-en]')];
+  const images = [...document.querySelectorAll('[data-en-alt]')];
+  const thHTML = new Map(nodes.map(n => [n, n.innerHTML]));
+  const thAlt  = new Map(images.map(n => [n, n.alt]));
+  const toggle = document.getElementById('lang-toggle');
+
+  function apply(lang){
+    LANG = (lang === 'en') ? 'en' : 'th';
+    document.documentElement.lang = LANG;
+    document.title = STR[LANG].title;
+
+    nodes.forEach(n => { n.innerHTML = LANG === 'en' ? n.dataset.en : thHTML.get(n); });
+    images.forEach(n => { n.alt = LANG === 'en' ? n.dataset.enAlt : thAlt.get(n); });
+
+    if(toggle){
+      toggle.querySelectorAll('span').forEach(s =>
+        s.classList.toggle('on', s.dataset.lang === LANG));
+    }
+    renderSeats(LAST_LIST);          /* ข้อความที่ JS สร้างเอง วาดใหม่ตามภาษา */
+    try{ localStorage.setItem('lang', LANG); }catch(e){}
+  }
+
+  let saved = null;
+  try{ saved = localStorage.getItem('lang'); }catch(e){}
+  apply(saved || 'th');
+
+  if(toggle){
+    toggle.addEventListener('click', () => apply(LANG === 'th' ? 'en' : 'th'));
+  }
+}
+
 /* วาดจากรายชื่อในไฟล์ก่อน (ขึ้นทันที ไม่มีจังหวะหน้าว่าง)
    แล้วถ้าตั้งลิงก์ชีตไว้ ค่อยดึงของจริงมาทับ — โหลดไม่ได้ก็ใช้ของในไฟล์ต่อ */
 renderSeats(PLAYERS);
+initLang();
 
 if(SHEET_CSV_URL){
   fetch(SHEET_CSV_URL + (SHEET_CSV_URL.includes('?') ? '&' : '?') + 't=' + Date.now())
