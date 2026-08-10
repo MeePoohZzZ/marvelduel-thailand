@@ -13,10 +13,8 @@
 <meta property="og:title" content="MARVEL DUEL THAILAND TOURNAMENT BY WOLF PACK">
 <meta property="og:description" content="24 ที่นั่ง · ค่าสมัคร 50 บาท · ออนไลน์ล้วน · เงินรางวัลรวม 3,300 บาท · เสาร์ 29 ส.ค. 2569 เริ่ม 10:00 น.">
 <meta property="og:type" content="website">
-<!-- EDIT: เมื่ออัปโหลดขึ้นโฮสต์จริง เปลี่ยนเป็น URL เต็ม เช่น https://โดเมนของคุณ/assets/marvel-duel-key-art.jpg -->
-<meta property="og:image" content="assets/marvel-duel-key-art.jpg">
-
-<link rel="preload" as="image" href="assets/marvel-duel-key-art.jpg">
+<!-- EDIT: เมื่ออัปโหลดขึ้นโฮสต์จริง เปลี่ยนเป็น URL เต็ม เช่น https://โดเมนของคุณ/assets/og-cover.png -->
+<meta property="og:image" content="assets/og-cover.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -103,31 +101,32 @@ a{color:inherit}
     var(--ink);
 }
 .hero::before{
-  content:"";position:absolute;inset:-30% -10%;z-index:0;opacity:.15;
+  content:"";position:absolute;inset:-30% -10%;z-index:0;opacity:.1;
   background:repeating-conic-gradient(from 0deg at 50% 40%,var(--blood) 0deg 5deg,transparent 5deg 10deg);
   animation:spin 90s linear infinite;
 }
 @keyframes spin{to{transform:rotate(360deg)}}
+/* เงามืดกลางเวที — ทำให้ตราสัญลักษณ์และหัวเรื่องลอยเด่นออกจากลายรัศมี */
+.hero::after{
+  content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(ellipse 62% 58% at 50% 42%,rgba(18,16,15,.72),rgba(18,16,15,.25) 58%,transparent 78%);
+}
 .hero .wrap{position:relative;z-index:1}
 
-/* ---- ภาพคีย์อาร์ตด้านบนสุด (เฉพาะบล็อกนี้ ไม่ใช่พื้นหลัง) ---- */
-.keyart{
-  position:relative;max-width:940px;
-  margin:0 auto clamp(.4rem,1.5vw,1rem);
+/* ---- ตราสัญลักษณ์รายการ : วาดด้วย SVG ในหน้าเว็บ ไม่ใช้ไฟล์ภาพภายนอก ---- */
+.crest{
+  display:block;width:clamp(104px,15vw,168px);height:auto;
+  margin:0 auto clamp(1rem,2.5vw,1.6rem);
+  filter:drop-shadow(0 14px 26px rgba(0,0,0,.6));
+  animation:crest-in 1s cubic-bezier(.16,1,.3,1) both;
 }
-/* ไล่ให้ขอบภาพทั้งสี่ด้านจางหายไปกับพื้น — ไม่มีกรอบ ไม่มีเส้นตัด */
-.keyart img{
-  display:block;width:100%;height:auto;
-  filter:saturate(.88) contrast(1.03) brightness(.9);
-  -webkit-mask-image:
-    linear-gradient(90deg,transparent 0,#000 18%,#000 82%,transparent 100%),
-    linear-gradient(180deg,transparent 0,#000 16%,#000 62%,transparent 100%);
-  -webkit-mask-composite:source-in;
-  mask-image:
-    linear-gradient(90deg,transparent 0,#000 18%,#000 82%,transparent 100%),
-    linear-gradient(180deg,transparent 0,#000 16%,#000 62%,transparent 100%);
-  mask-composite:intersect;
-}
+@keyframes crest-in{from{opacity:0;transform:translateY(-14px) scale(.9)}to{opacity:1;transform:none}}
+.crest .spin{transform-origin:120px 120px;animation:spin 42s linear infinite}
+.crest .card-l{transform-origin:120px 124px;animation:sway 7s ease-in-out infinite}
+.crest .card-r{transform-origin:120px 124px;animation:sway 7s ease-in-out infinite reverse}
+@keyframes sway{0%,100%{transform:rotate(0deg)}50%{transform:rotate(2.5deg)}}
+.crest .spark{transform-origin:120px 118px;animation:pulse 3.2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:.85;transform:scale(1)}50%{opacity:1;transform:scale(1.14)}}
 
 .eyebrow{
   font-family:var(--data);font-weight:700;font-size:.75rem;
@@ -374,6 +373,8 @@ section{padding:clamp(3.5rem,8vw,6rem) 0}
 /* ---- ผลการแข่งขัน : กระดานคะแนนรอบชิง ---- */
 .board-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
 .board{width:100%;min-width:440px;border-collapse:collapse;font-family:var(--data)}
+/* มีคอลัมน์เกณฑ์ตัดสินเพิ่ม 2 ช่อง — กว้างขึ้นแล้วเลื่อนแนวนอนแทนการบีบตัวเลข */
+.board.wide{min-width:640px}
 .board th{
   font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;
   color:var(--paper-2);opacity:.65;text-align:center;padding:.55rem .45rem;
@@ -391,7 +392,37 @@ section{padding:clamp(3.5rem,8vw,6rem) 0}
 .board td.g{color:var(--paper-2)}
 .board td.tot{color:var(--gold);font-size:1.1rem}
 .board tr.champ td{background:rgba(240,180,41,.13)}
+/* คอลัมน์เกณฑ์ตัดสิน — โผล่เฉพาะตอนมีคะแนนรวมเท่ากัน */
+.board th.tb,.board td.tb{
+  color:var(--paper-2);opacity:.75;font-size:.78rem;
+  border-left:1px solid rgba(243,233,214,.12);
+}
+.board th.tb{opacity:.5}
+/* แถวที่คะแนนรวมชนกัน — ขีดเส้นซ้ายสีทองให้เห็นเป็นกลุ่ม */
+.board tr.tied td:first-child{box-shadow:inset 3px 0 0 var(--gold)}
+/* ที่ 1 ที่ยังตัดสินไม่ได้ — ใช้โทนกลางๆ ไม่ประกาศเป็นแชมป์ */
+.board tr.champ.pending td{background:rgba(243,233,214,.07)}
+
+/* บรรทัดอธิบายใต้ชื่อ ว่าแซงใครด้วยเกณฑ์ไหน */
+.board .why{
+  display:block;margin-top:.25rem;margin-left:0;
+  font-family:var(--data);font-weight:600;font-size:.62rem;letter-spacing:.04em;
+  color:var(--gold);opacity:.85;white-space:normal;
+}
+/* ช่องตัวเลขที่ใช้ตัดสินคู่นั้น — ตีกรอบทองให้สายตาไปหยุดตรงนี้ */
+.board td.key{
+  box-shadow:inset 0 0 0 1px rgba(240,180,41,.75);
+  background:rgba(240,180,41,.1);color:var(--gold);
+}
+.tb-legend{
+  font-family:var(--data);font-weight:600;font-size:.72rem;line-height:1.7;
+  letter-spacing:.02em;color:var(--paper-2);opacity:.7;margin-top:.9rem;
+  padding-left:.9rem;border-left:2px solid rgba(240,180,41,.5);
+}
 .board tr.champ td.rk{opacity:1}
+/* ที่ 1 ที่ยังตัดสินไม่ได้ — ป้ายแบบขอบโปร่ง ไม่ใช่ทองทึบแบบแชมป์จริง */
+.board .champ-tag.pending{background:transparent;color:var(--gold);
+  box-shadow:inset 0 0 0 1px rgba(240,180,41,.7)}
 .board .champ-tag{
   display:inline-block;margin-left:.5rem;background:var(--gold);color:var(--ink);
   font-family:var(--data);font-weight:700;font-size:.55rem;letter-spacing:.12em;
@@ -574,10 +605,60 @@ footer{background:var(--ink-2);padding:3rem 0 2.2rem;font-size:.9rem}
 <header class="hero">
   <div class="wrap">
 
-    <figure class="keyart">
-      <img src="assets/marvel-duel-key-art.jpg" width="1179" height="553"
-           alt="คีย์อาร์ตเกม Marvel Duel — ธอร์ปะทะไอรอนแมน" data-en-alt="Marvel Duel key art — Thor versus Iron Man" decoding="async">
-    </figure>
+    <!-- ตราสัญลักษณ์รายการ — งานวาดต้นฉบับของทีมงาน ไม่มีทรัพย์สินทางปัญญาของผู้ใด -->
+    <svg class="crest" viewBox="0 0 240 240" role="img" aria-labelledby="crest-title">
+      <title id="crest-title" data-en="Wolf Pack tournament crest">ตราสัญลักษณ์รายการ by Wolf Pack</title>
+      <defs>
+        <linearGradient id="cardA" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#E0322C"/><stop offset="1" stop-color="#4A0F0D"/>
+        </linearGradient>
+        <linearGradient id="cardB" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#1E3364"/><stop offset="1" stop-color="#0C1730"/>
+        </linearGradient>
+        <radialGradient id="glow">
+          <stop offset="0" stop-color="#F0B429" stop-opacity=".55"/>
+          <stop offset="1" stop-color="#F0B429" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+
+      <circle cx="120" cy="120" r="112" fill="url(#glow)"/>
+
+      <!-- รัศมีหมุนช้าๆ ด้านหลัง -->
+      <g class="spin" opacity=".5">
+        <g fill="#E0322C">
+          <path d="M120 18 L128 120 L112 120 Z"/><path d="M222 120 L120 128 L120 112 Z"/>
+          <path d="M120 222 L112 120 L128 120 Z"/><path d="M18 120 L120 112 L120 128 Z"/>
+        </g>
+        <g fill="#F0B429" opacity=".55">
+          <path d="M192 48 L126 126 L114 114 Z"/><path d="M192 192 L114 126 L126 114 Z"/>
+          <path d="M48 192 L114 114 L126 126 Z"/><path d="M48 48 L126 114 L114 126 Z"/>
+        </g>
+      </g>
+
+      <!-- การ์ดสองใบปะทะกัน -->
+      <g class="card-l">
+        <rect x="58" y="72" width="66" height="96" rx="7"
+              fill="url(#cardA)" stroke="#F0B429" stroke-opacity=".55" stroke-width="2"
+              transform="rotate(-15 91 120)"/>
+      </g>
+      <g class="card-r">
+        <rect x="116" y="72" width="66" height="96" rx="7"
+              fill="url(#cardB)" stroke="#F0B429" stroke-opacity=".55" stroke-width="2"
+              transform="rotate(15 149 120)"/>
+      </g>
+
+      <!-- ประกายตรงจุดปะทะ -->
+      <g class="spark">
+        <path d="M120 84 L133 118 L120 152 L107 118 Z" fill="#F0B429"/>
+        <path d="M120 100 L126 118 L120 136 L114 118 Z" fill="#FFF6E0"/>
+      </g>
+
+      <!-- วงแหวนกรอบนอกแบบหกเหลี่ยม -->
+      <path d="M120 10 L215 65 L215 175 L120 230 L25 175 L25 65 Z"
+            fill="none" stroke="#F0B429" stroke-width="4"/>
+      <path d="M120 24 L203 72 L203 168 L120 216 L37 168 L37 72 Z"
+            fill="none" stroke="#F0B429" stroke-width="1.5" stroke-opacity=".45"/>
+    </svg>
 
     <p class="eyebrow" data-en="Thailand's online card duel championship">ศึกดวลการ์ดออนไลน์ ชิงแชมป์ประเทศไทย</p>
 
@@ -958,6 +1039,11 @@ const pad = n => String(n).padStart(2,'0');
    PLAYERS ข้างล่างเป็นรายชื่อสำรอง ใช้เมื่อโหลดชีตไม่ได้
    ================================================================== */
 const TOTAL_SEATS   = 24;
+
+/* โหมดจับสลาก (?draw ต่อท้าย URL) — ดึงรายชื่อสดจากชีตใหม่ทุกครั้ง
+   และไม่เอาผลสุ่มเก่าที่ค้างในเครื่องมาทับ */
+const DRAW_MODE = /[?&]draw\b/.test(location.search);
+
 const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQQdy0U9La2QcHlsSD1GcFvMze9Ypg69ugvwoP7DrddNBfVpLhsmFyvrK7UrcMYxszlpx7lxfQMjumg/pub?gid=905234825&single=true&output=csv';   /* EDIT: วางลิงก์ CSV ของ Google Sheet ตรงนี้ ถ้าเว้นว่างจะใช้ PLAYERS ข้างล่าง */
 
 const PLAYERS = [
@@ -1025,14 +1111,18 @@ function parseCSV(text){
 const ADV_RE = /^(advance|adv|a|yes|y|1|true|ok|ผ่าน|เข้ารอบ|ผ่านเข้ารอบ|ชนะ)$/i;
 const OUT_RE = /^(out|o|no|n|0|false|x|ตกรอบ|แพ้|คัดออก)$/i;
 const normStatus = v => ADV_RE.test(v) ? 'advance' : OUT_RE.test(v) ? 'out' : '';
-const cellNum    = v => v === '' || v === undefined || isNaN(Number(v)) ? null : Number(v);
+const cellNum    = v => (v === '' || v === null || v === undefined || isNaN(Number(v))) ? null : Number(v);
 
 /* เอาข้อมูลจากชีตมาลงหน้าเว็บทั้งหมด — คอลัมน์ไหนชีตไม่มี ก็คงค่าเดิมในไฟล์ไว้ */
-function applySheet(list){
+/* replace = true : ยึดชีตเป็นความจริงทั้งหมด คอลัมน์ที่ว่างจะล้างของเดิมบนหน้าจอด้วย
+   ใช้ตอนกดปุ่มโหลดใหม่ และตอนเข้าโหมดจับสลาก
+   replace = false : คอลัมน์ที่ชีตไม่มีข้อมูลเลย จะคงค่าจาก RESULTS ในไฟล์ไว้
+   ใช้ตอนเปิดหน้าปกติ เผื่อชีตยังไม่ได้เพิ่มคอลัมน์ผลการแข่ง */
+function applyRows(list, replace){
   if(!list.length) return;
   renderSeats(list);
 
-  const filled = key => list.some(r => r[key]);
+  const filled = key => replace || list.some(r => r[key]);
 
   if(filled('group')){
     RESULTS.groups = ['A','B','C','D'].map(key => ({
@@ -1054,12 +1144,16 @@ function applySheet(list){
 
   const hasScore  = r => [r.g1, r.g2, r.g3].some(v => cellNum(v) !== null);
   const finalists = list.filter(r => normStatus(r.semistatus) === 'advance' || hasScore(r));
-  if(finalists.length){
+  if(finalists.length || replace){
     RESULTS.final = finalists.map(r => ({
       name:r.name, ign:r.ign || '', g:[cellNum(r.g1), cellNum(r.g2), cellNum(r.g3)]
     }));
     /* จบรอบชิงแล้ว = ทุกคนกรอกคะแนนครบทั้ง 3 เกม */
-    RESULTS.finalDone = RESULTS.final.every(p => p.g.every(v => v !== null));
+    /* ช่องว่าง = 0 คะแนน จึงดูจาก "ทุกเกมมีคะแนนบันทึกแล้วหรือยัง" แทน */
+    RESULTS.finalDone = RESULTS.final.length > 0 &&
+                        Array.from({length:FINAL_GAMES}, (_,k) =>
+                          RESULTS.final.some(p => p.g[k] !== null && p.g[k] !== undefined)
+                        ).every(Boolean);
   }
 
   renderResults();
@@ -1120,6 +1214,7 @@ const RESULTS = {
 
 
 const GROUP_SIZE = 6, ADVANCE_PER_GROUP = 3, FINAL_GAMES = 3;
+const WIN_POINTS = 7;   /* คะแนนของอันดับ 1 ในแต่ละเกม ใช้นับว่า "ได้ที่ 1 กี่ครั้ง" */
 
 /* ---------- ข้อความที่ JS สร้างเอง (ต้องมีทั้งสองภาษา) ---------- */
 const STR = {
@@ -1131,6 +1226,9 @@ const STR = {
     group:'กลุ่ม', groupCap:`${GROUP_SIZE} คน · เข้ารอบ ${ADVANCE_PER_GROUP}`,
     adv:'ผ่านเข้ารอบ', out:'ตกรอบ', tbd:'รอแข่ง', slot:'รอผู้เล่น',
     rank:'อันดับ', player:'ผู้เล่น', game:'เกม', total:'รวม', champ:'แชมป์',
+    wins:'ได้ที่ 1', best:'สูงสุด/เกม', undecided:'ยังไม่ตัดสิน',
+    beatWith:(who,crit) => `แซง ${who} ด้วย${crit}`,
+    tiebreak:'คะแนนรวมเท่ากัน ตัดสินตามลำดับ: จำนวนครั้งที่ได้ที่ 1 → คะแนนสูงสุดในเกมเดียว → คะแนนเกมท้ายสุด',
     soon:'ผลการแข่งขันจะอัปเดตระหว่างวันแข่ง เสาร์ที่ 29 สิงหาคม 2569'
   },
   en:{
@@ -1141,6 +1239,9 @@ const STR = {
     group:'Group', groupCap:`${GROUP_SIZE} players · top ${ADVANCE_PER_GROUP} advance`,
     adv:'Advanced', out:'Eliminated', tbd:'To play', slot:'Open slot',
     rank:'Rank', player:'Player', game:'Game', total:'Total', champ:'Champion',
+    wins:'1st places', best:'Best game', undecided:'Undecided',
+    beatWith:(who,crit) => `ahead of ${who} on ${crit}`,
+    tiebreak:'Tied on total points, decided in order: number of 1st places → best single game → last game score',
     soon:'Results go up live on tournament day — Saturday 29 August 2026'
   }
 };
@@ -1281,13 +1382,20 @@ function renderResults(){
   if(!box) return;
   box.textContent = '';
 
+  /* ช่องคะแนนที่เว้นว่างในชีต = 0 คะแนน (แข่งแล้วไม่ได้แต้ม) */
+  const score = v => { const n = cellNum(v); return n === null ? 0 : n; };
+
   const rows = RESULTS.final
     .filter(p => p && p.name)
     .map(p => {
-      const g = (p.g || []).slice(0, FINAL_GAMES);
-      return { ...p, g, total: g.reduce((a,b) => a + (Number(b) || 0), 0) };
-    })
-    .sort((a,b) => b.total - a.total);
+      const g = Array.from({length:FINAL_GAMES}, (_,i) => score((p.g || [])[i]));
+      return {
+        ...p, g,
+        total: g.reduce((a,b) => a + b, 0),
+        wins : g.filter(v => v === WIN_POINTS).length,   /* ได้ที่ 1 กี่ครั้ง */
+        best : g.reduce((m,v) => v > m ? v : m, 0)       /* คะแนนสูงสุดในเกมเดียว */
+      };
+    });
 
   if(!rows.length){
     const note = document.createElement('p');
@@ -1297,28 +1405,72 @@ function renderResults(){
     return;
   }
 
+  /* หาว่าสองคนนี้ต่างกันที่เกณฑ์ไหนเป็นอันดับแรก
+     ลำดับ: รวม → จำนวนที่ 1 → คะแนนสูงสุดต่อเกม → คะแนนเกมท้ายสุดไล่ย้อน */
+  const firstDiff = (a,b) => {
+    if(a.total !== b.total) return {crit:'total', d:b.total - a.total};
+    if(a.wins  !== b.wins ) return {crit:'wins',  d:b.wins  - a.wins };
+    if(a.best  !== b.best ) return {crit:'best',  d:b.best  - a.best };
+    for(let k = FINAL_GAMES - 1; k >= 0; k--){
+      if(a.g[k] !== b.g[k]) return {crit:'g', game:k, d:b.g[k] - a.g[k]};
+    }
+    return null;
+  };
+  const compare = (a,b) => { const r = firstDiff(a,b); return r ? r.d : 0; };
+  rows.sort(compare);
+
+  /* อันดับแบบแข่งขัน: เท่ากันทุกเกณฑ์ = อันดับเดียวกัน */
+  rows.forEach((p, i) => {
+    p.rank = (i > 0 && compare(rows[i-1], p) === 0) ? rows[i-1].rank : i + 1;
+  });
+
+  /* คนที่คะแนนรวมชนกับคนถัดไป — บันทึกว่าแซงกันได้เพราะเกณฑ์ไหน เอาไปอธิบายบนตาราง */
+  rows.forEach((p, i) => {
+    const nxt = rows[i+1];
+    p.beat = (nxt && nxt.total === p.total) ? { over:nxt, ...firstDiff(p, nxt) } : null;
+    if(p.beat && p.beat.crit) nxt.beatenBy = p.beat;   /* ให้อีกฝ่ายรู้ว่าโดนแซงที่ช่องไหน */
+  });
+  const critLabel = c =>
+    c.crit === 'wins' ? t.wins :
+    c.crit === 'best' ? t.best :
+    c.crit === 'g'    ? `${t.game} ${c.game + 1}` : t.total;
+
+  /* มีใครคะแนนรวมเท่ากันบ้าง — ใช้ตัดสินใจว่าจะโชว์คอลัมน์เกณฑ์เพิ่มไหม */
+  const tiedTotals = new Set(
+    rows.map(p => p.total).filter((v,i,arr) => arr.indexOf(v) !== i)
+  );
+  const hasTie   = tiedTotals.size > 0;
+  const champion = rows.filter(p => p.rank === 1);
+  const settled  = RESULTS.finalDone && champion.length === 1;
+
   const table = document.createElement('table');
-  table.className = 'board';
+  table.className = hasTie ? 'board wide' : 'board';
+
+  const cols = [t.rank, t.player,
+                ...Array.from({length:FINAL_GAMES}, (_,i) => `${t.game} ${i+1}`),
+                t.total];
+  if(hasTie) cols.push(t.wins, t.best);
 
   const head = document.createElement('tr');
-  [t.rank, t.player, ...Array.from({length:FINAL_GAMES}, (_,i) => `${t.game} ${i+1}`), t.total]
-    .forEach((label, i) => {
-      const th = document.createElement('th');
-      if(i === 1) th.className = 'nm';
-      th.textContent = label;
-      head.appendChild(th);
-    });
+  cols.forEach((label, i) => {
+    const th = document.createElement('th');
+    if(i === 1) th.className = 'nm';
+    if(hasTie && i >= cols.length - 2) th.className = 'tb';
+    th.textContent = label;
+    head.appendChild(th);
+  });
   const thead = document.createElement('thead');
   thead.appendChild(head);
 
   const tbody = document.createElement('tbody');
-  rows.forEach((p, i) => {
+  rows.forEach(p => {
     const tr = document.createElement('tr');
-    if(i === 0) tr.className = 'champ';
+    if(p.rank === 1) tr.className = settled ? 'champ' : 'champ pending';
+    if(tiedTotals.has(p.total)) tr.classList.add('tied');
 
     const rk = document.createElement('td');
     rk.className = 'rk';
-    rk.textContent = pad(i + 1);
+    rk.textContent = pad(p.rank);
 
     const nm = document.createElement('td');
     nm.className = 'nm';
@@ -1328,30 +1480,64 @@ function renderResults(){
       s.textContent = p.ign;
       nm.appendChild(s);
     }
-    if(i === 0 && RESULTS.finalDone){
+    if(p.rank === 1 && settled){
       const tag = document.createElement('span');
       tag.className = 'champ-tag';
       tag.textContent = t.champ;
       nm.appendChild(tag);
     }
+    if(p.rank === 1 && !settled && champion.length > 1){
+      const tag = document.createElement('span');
+      tag.className = 'champ-tag pending';
+      tag.textContent = t.undecided;
+      nm.appendChild(tag);
+    }
+    /* บอกตรงๆ ว่าแซงใครด้วยเกณฑ์อะไร — จุดที่คนดูสงสัยมากที่สุด */
+    if(p.beat && p.beat.crit){
+      const why = document.createElement('span');
+      why.className = 'why';
+      why.textContent = t.beatWith(p.beat.over.name, critLabel(p.beat));
+      nm.appendChild(why);
+    }
+
+    /* ช่องที่ใช้ตัดสินของคู่นี้ ทั้งฝั่งที่ชนะและฝั่งที่แพ้ */
+    const decidingCrit = (p.beat && p.beat.crit) || (p.beatenBy && p.beatenBy.crit);
+    const decidingGame = (p.beat && p.beat.crit === 'g') ? p.beat.game
+                       : (p.beatenBy && p.beatenBy.crit === 'g') ? p.beatenBy.game : -1;
 
     tr.append(rk, nm);
-    for(let k = 0; k < FINAL_GAMES; k++){
+    p.g.forEach((v, k) => {
       const td = document.createElement('td');
-      td.className = 'g';
-      td.textContent = (p.g[k] === null || p.g[k] === undefined || p.g[k] === '') ? '–' : p.g[k];
+      td.className = 'g' + (k === decidingGame ? ' key' : '');
+      td.textContent = v;
       tr.appendChild(td);
-    }
+    });
     const tot = document.createElement('td');
     tot.className = 'tot';
     tot.textContent = p.total;
     tr.appendChild(tot);
 
+    if(hasTie){
+      [['wins', p.wins], ['best', p.best]].forEach(([key, v]) => {
+        const td = document.createElement('td');
+        td.className = 'tb' + (decidingCrit === key ? ' key' : '');
+        td.textContent = v;
+        tr.appendChild(td);
+      });
+    }
     tbody.appendChild(tr);
   });
 
   table.append(thead, tbody);
   box.appendChild(table);
+
+  /* คำอธิบายเกณฑ์ — ขึ้นเฉพาะตอนมีคนคะแนนรวมเท่ากัน */
+  if(hasTie){
+    const legend = document.createElement('p');
+    legend.className = 'tb-legend';
+    legend.textContent = t.tiebreak;
+    box.appendChild(legend);
+  }
 }
 
 /* ==================================================================
@@ -1403,12 +1589,14 @@ const advancing = groups =>
   (groups || []).flatMap(g => (g.players || []).filter(p => p.name && p.status === 'advance'));
 
 function initDraw(){
-  if(!/[?&]draw\b/.test(location.search)) return;
+  if(!DRAW_MODE) return;
 
-  /* ผลสุ่มที่ยังไม่ได้เอาไปวางในไฟล์ เก็บไว้ในเครื่องกันรีเฟรชแล้วหาย */
+  /* ผลสุ่มครั้งก่อนยังเก็บไว้ในเครื่อง แต่ไม่เอามาทับข้อมูลจากชีตอัตโนมัติ
+     ต้องกดปุ่ม "กู้คืนผลสุ่มล่าสุด" เอง ป้องกันการเห็นผลเก่าโดยไม่รู้ตัว */
+  let savedDraw = null;
   try{
-    const saved = JSON.parse(localStorage.getItem('draw') || 'null');
-    if(saved && saved.groups){ Object.assign(RESULTS, saved); renderResults(); }
+    const s = JSON.parse(localStorage.getItem('draw') || 'null');
+    if(s && s.groups) savedDraw = s;
   }catch(e){}
 
   const box = document.createElement('aside');
@@ -1431,15 +1619,19 @@ function initDraw(){
     </div>
     <div class="row">
       <button class="drawbtn ghost" id="draw-copy-js">คัดลอกเป็นโค้ด RESULTS</button>
+    </div>
+    <p class="note" id="draw-cmd"></p>
+    <div class="row">
+      <button class="drawbtn ghost" id="draw-reload">โหลดใหม่จากชีต</button>
+      <button class="drawbtn ghost" id="draw-restore" hidden>กู้คืนผลสุ่มล่าสุด</button>
     </div>`;
   document.body.appendChild(box);
 
   const $ = id => box.querySelector('#' + id);
   const code = $('draw-code'), note = $('draw-note');
 
-  $('draw-warn').textContent = SHEET_CSV_URL
-    ? 'โหมดทีมงาน — ผลสุ่มอยู่แค่เบราว์เซอร์นี้ ต้องกดคัดลอกแล้ววางทับที่ช่อง A1 ในชีต คนอื่นถึงจะเห็นตรงกัน'
-    : 'โหมดทีมงาน — ผลสุ่มอยู่แค่เบราว์เซอร์นี้ ต้องคัดลอกโค้ดไปวางแทน RESULTS ในไฟล์แล้ว push คนอื่นถึงจะเห็นตรงกัน';
+  $('draw-warn').textContent =
+    'โหมดทีมงาน — ผลสุ่มอยู่แค่เบราว์เซอร์นี้ ต้องกดคัดลอกแล้ววางทับที่ช่อง A1 ในชีต คนอื่นถึงจะเห็นตรงกัน';
 
   function save(){
     try{
@@ -1538,7 +1730,10 @@ function initDraw(){
         ? 'ขั้น 03 จะกดได้เมื่อกรอก status:\'advance\' ให้ผู้ผ่านเข้ารอบในรอบรองแล้ว'
         : 'ครบทุกขั้นแล้ว — คัดลอกโค้ดไปวางแทน RESULTS ในไฟล์ได้เลย';
 
-    code.value = SHEET_CSV_URL ? buildTSV() : buildCode();
+    code.value = buildTSV();
+    const cmd = box.querySelector('#draw-cmd');
+    if(cmd) cmd.textContent =
+      'วิธีวาง: เปิดชีต คลิกช่อง A1 แล้วกด Cmd+V — ตารางจะทับของเดิมทั้งแผ่นพร้อมหัวตาราง';
     save();
   }
 
@@ -1583,6 +1778,42 @@ function initDraw(){
     try{ localStorage.removeItem('draw'); }catch(e){}
     location.reload();
   });
+
+  /* ดึงรายชื่อและผลจากชีตใหม่โดยไม่ต้องรีเฟรชหน้า — ใช้ตอนมีคนแก้ชีตระหว่างงาน */
+  $('draw-reload').addEventListener('click', e => {
+    const btn = e.currentTarget;
+    const cmd = box.querySelector('#draw-cmd');
+    btn.disabled = true; btn.textContent = 'กำลังโหลด...';
+    loadSheet()
+      .then(list => {
+        const t = new Date().toLocaleTimeString('th-TH');
+        if(list.length){
+          applyRows(list, true);          /* ยึดชีตทั้งหมด คอลัมน์ว่าง = ล้างของเดิม */
+          sync();
+          btn.textContent = 'โหลดแล้ว ✓';
+          if(cmd) cmd.textContent = `ดึงจากชีตเมื่อ ${t} — ได้ ${list.length} คน · ` +
+            `กลุ่ม ${RESULTS.groups.reduce((n,g)=>n+g.players.length,0)} · ` +
+            `รอบรอง ${RESULTS.semis.reduce((n,g)=>n+g.players.length,0)} · ` +
+            `รอบชิง ${RESULTS.final.length}`;
+        } else {
+          btn.textContent = 'ชีตไม่มีข้อมูล';
+        }
+      })
+      .catch(err => { console.warn(err); btn.textContent = 'โหลดไม่สำเร็จ'; })
+      .then(() => setTimeout(() => {
+        btn.disabled = false; btn.textContent = 'โหลดใหม่จากชีต';
+      }, 1800));
+  });
+
+  if(savedDraw){
+    const rb = $('draw-restore');
+    rb.hidden = false;
+    rb.addEventListener('click', () => {
+      Object.assign(RESULTS, savedDraw);
+      renderResults(); sync();
+      rb.hidden = true;
+    });
+  }
 
   $('draw-close').addEventListener('click', () => box.remove());
 
@@ -1652,14 +1883,27 @@ renderSeats(PLAYERS);
 initLang();
 initDraw();
 
-if(SHEET_CSV_URL){
-  fetch(SHEET_CSV_URL + (SHEET_CSV_URL.includes('?') ? '&' : '?') + 't=' + Date.now())
+/* ดึงจาก Google Sheet ถ้าล้มเหลวจะใช้รายชื่อ PLAYERS ในไฟล์แทน
+   หน้าเว็บจึงไม่มีทางว่างเปล่า */
+const loadSheet = () =>
+  fetch(SHEET_CSV_URL + (SHEET_CSV_URL.includes('?') ? '&' : '?') + 't=' + Date.now(),
+        {cache:'no-store'})
     .then(r => { if(!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
-    .then(text => {
-      const list = parseCSV(text);
-      if(list.length){ applySheet(list); if(window.drawSync) window.drawSync(); }
+    .then(parseCSV);
+
+const loadRemote = SHEET_CSV_URL
+  ? loadSheet().catch(err => {
+      console.warn('โหลดชีตไม่สำเร็จ ใช้รายชื่อในไฟล์แทน:', err);
+      return [];
     })
-    .catch(err => console.warn('โหลดรายชื่อจาก Google Sheet ไม่สำเร็จ ใช้รายชื่อในไฟล์แทน:', err));
+  : null;
+
+if(loadRemote){
+  loadRemote
+    .then(list => {
+      if(list.length){ applyRows(list, DRAW_MODE); if(window.drawSync) window.drawSync(); }
+    })
+    .catch(err => console.warn('โหลดข้อมูลจากระบบภายนอกไม่สำเร็จ ใช้ข้อมูลในไฟล์แทน:', err));
 }
 const el = {d:document.getElementById('d'),h:document.getElementById('h'),
             m:document.getElementById('m'),s:document.getElementById('s')};
